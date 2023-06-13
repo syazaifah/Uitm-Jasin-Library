@@ -3,9 +3,11 @@
 <head>
     <title>UiTM Jasin Library System</title>
     <link rel="icon" type="image/x-icon" href="img/book.png">
+    
     <style>
-        body{
-    background-image: url("../assets/img/bookshelf.jpg");
+
+body{
+    background-image: url("img/bookshelf.jpg");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -107,7 +109,7 @@ button{
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
-            <a class="link" id="home"th:href="@{/index.html}">Home</a>
+            <a class="link" id="home"th:href="@{/index}">Home</a>
             <a class="link" href="#">Book Cart</a>
         </nav>
     </header>
@@ -118,10 +120,10 @@ button{
         </h2>
         <div class="intro">
             <label class="as">AS :</label><br>
-                <a th:href="@{/createAccForm.html}">
+                <a th:href="@{/createAccForm}">
                     <button type="submit" class="student">Student</button>
                 </a>
-                <a th:href="@{/createAccForm.html}">
+                <a th:href="@{/createAccForm}">
                     <button type="submit" class="librarian">Librarian</button>
                 </a>
         </div>
