@@ -28,7 +28,7 @@ public class GettingStartedApplication {
     
     @GetMapping("createAccForm")
     public String createAccForm() {
-        return "createAccForm";
+        return "createAccForm";
     }
     
     @GetMapping("/database")
