@@ -1,0 +1,192 @@
+@charset "UTF-8";
+
+body{
+    background-image: url("../assets/img/bookshelf.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+/*index*/
+
+h1{
+    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 2.5rem;
+    font-weight: bolder;
+    text-align: center;
+    color: white;
+    margin-top: -120px;
+}
+
+.logo{
+    width: 12%;
+    margin-top: -50px;
+}
+
+#mainNav{
+    background-color: #006400;
+    margin-left: -8px;
+    margin-right: -8px;
+    height: 80px;
+}
+
+.nav-link{
+    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 800;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+#create{
+    margin-left: 440px;
+}
+
+.nav-item{
+    list-style-type: none;
+    display: inline-block;
+    margin: 0px 55px;
+    margin-top: 25px;
+}
+
+.kjm{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.intro{
+    background-color: #8FBC8F;
+    margin: -30px 280px 0px 280px;
+    border-radius: 10px;
+    border: 1px solid black;
+    position: absolute;
+    padding-bottom: 20px;
+}
+
+.section-heading-upper{
+    font-size: 30px;
+    margin: 0px 170px 0px 170px;
+}
+
+.objective{
+    font-size: 22px;
+    font-weight: bolder;
+    margin-bottom: -10px;
+    margin-left: 10px;
+
+}
+
+.mb-3{
+    margin-left: 10px;
+}
+
+.container{
+    margin-bottom: 350px;
+}
+
+/*createAccForm*/
+
+.logo1{
+    width: 12%;
+}
+
+#mainNav1{
+    background-color:#1c441c;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-top: -8px;
+    height: 80px;
+    font-size: 1.4rem;
+    text-align: center;
+    align-items: center;
+    text-align: center;
+}
+
+.nav-link1{
+    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 800;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+} 
+
+.nav-item1{
+    list-style-type: none;
+    padding: 10px;
+    margin-left: 15px;
+    display:inline;
+}
+
+h2{
+    color:black;
+    font-weight: 800;
+    font-size: 27px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 70px;
+    margin-top: 5px;
+}
+
+#adCreate{
+    border-radius: 10px;
+    background-color:#f2f9ee;
+    margin-top: 70px;
+    margin-left: 440px;
+    width: 500px;
+    height: 400px;
+}
+
+#Create{
+    margin-top: 5px;
+    margin-left: 25px;
+    width: 425px;
+    height: 258px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    color: black;
+}
+
+.name, .studentId, .phone, .email{
+    margin-left: 100px;
+}
+
+input[type="text"], input[type="email"]{
+    margin-left: 100px;
+    border-radius: 5px;
+    background-color: gainsboro;
+    border-color: black;
+    width: 240px;
+    height: 20px;
+}
+
+.btn{
+    padding: 5px 40px;
+    background:#406b40;
+    border-color: black;
+    outline: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px;
+    margin-left: 195px;
+    margin-top: -6px;
+}
+
+.btn:hover{
+    background-color: #8FBC8F;
+}
+
+.btn:focus{
+    background-color: #85ad85;
+    outline: none;
+}
