@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>UiTM Jasin Library System</title>
+        <link rel="icon" type="image/x-icon" th:href="@{assets/book.png}" />
+        <!-- Google fonts-->
+        <link th:href="@{https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i}" rel="stylesheet" />
+        <link th:href="@{https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i}" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link th:href="@{css/style.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav1">
+                <img class="logo1" src="assets/img/uitm-logo.png">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item1 px-lg-4"><a class="nav-link1 text-uppercase" th:href="@{index.html}">Home</a></li>
+                        <li class="nav-item1 px-lg-4"><a class="nav-link1 text-uppercase"th:href="@{bookCart.html}">Book Cart</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!--end nav-->
+        <section class="page-section clearfix">
+            <div class="container2">
+                <h2 class="section-heading1 mb-4">
+                    <span class="section-heading-upper1">UiTM JASIN LIBRARY</span>
+                </h2>
+                <div class="intro1">
+                    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+
+                            <label class="as">AS :</label><br>
+                            <button type="submit" class="student" onclick="student()">Student</button>
+                            <button type="submit" class="librarian" onclick="librarian()">Librarian</button>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
