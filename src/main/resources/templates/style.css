@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body{
-    background-image: url("../assets/img/bookshelf.jpg");
+    background-image: url("img/bookshelf.jpg");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
