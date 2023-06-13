@@ -31,9 +31,9 @@ public class GettingStartedApplication {
         return "createAccForm";
     }
 
-    @GetMapping("bookCart")
-    public String bookCart() {
-        return "bookCart";
+    @GetMapping("create")
+    public String create() {
+        return "create";
     }
     
     @GetMapping("/database")
