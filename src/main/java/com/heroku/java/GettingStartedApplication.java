@@ -26,16 +26,21 @@ public class GettingStartedApplication {
         return "index";
     }
     
+      @GetMapping("create")
+    public String create() {
+        return "create";
+    }
+
     @GetMapping("createAccForm")
     public String createAccForm() {
         return "createAccForm";
     }
 
-    @GetMapping("create")
-    public String create() {
-        return "create";
+    @GetMapping("createAccFormLib")
+    public String createAccFormLib() {
+        return "createAccFormLib";
     }
-    
+
     @GetMapping("/database")
     String database(Map<String, Object> model) {
         try (Connection connection = dataSource.getConnection()) {
