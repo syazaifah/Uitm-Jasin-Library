@@ -26,19 +26,48 @@ public class GettingStartedApplication {
         return "index";
     }
     
-      @GetMapping("create")
+    @GetMapping("create")
     public String create() {
         return "create";
     }
 
-    @GetMapping("createAccForm")
+    @GetMapping("createAccFormUser")
     public String createAccForm() {
-        return "createAccForm";
+        return "createAccFormUser";
     }
 
     @GetMapping("createAccFormLib")
     public String createAccFormLib() {
         return "createAccFormLib";
+    }
+
+    @GetMapping("login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("loginUser")
+    public String loginUser() {
+        return "loginUser";
+    }
+
+    @GetMapping("loginLibrarian")
+    public String loginLibrarian() {
+        return "loginLibrarian";
+    }
+
+     @GetMapping("userHome")
+    public String userHome() {
+        return "userHome";
+    }
+
+     @GetMapping("viewUser")
+    public String viewUser() {
+        return "viewUser";
+    }
+     @GetMapping("updateUser")
+    public String updateUser() {
+        return "updateUser";
     }
 
     @GetMapping("/database")

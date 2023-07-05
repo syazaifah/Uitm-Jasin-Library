@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UiTM Jasin Library System</title>
     <link rel="icon" type="image/x-icon" href="img/book.png">
-    
-    <style>
-        
+</head>
+
+<style>
 body{
     background-image: url("img/back2.jpg");
     background-attachment: fixed;
@@ -18,7 +20,7 @@ h1{
     font-size: 2.5rem;
     font-weight: bolder;
     text-align: center;
-    color: rgb(59, 13, 44);
+    color: white;
     margin-top: -120px;
 }
 
@@ -28,7 +30,7 @@ h1{
 }
 
 .nav{
-    background-color: #f7fffa;
+    background-color: #006400;
     margin-left: -8px;
     margin-right: -8px;
     height: 80px;
@@ -39,14 +41,14 @@ h1{
     font-weight: 800;
     font-size: 20px;
     text-decoration: none;
-    color: rgb(0, 215, 234);
+    color: white;
     display: inline-block;
     margin: 0px 55px;
     margin-top: 25px;
 }
 
 #create{
-    margin-left: 560px;
+    margin-left: 500px;
 }
 
 .kjm{
@@ -59,17 +61,17 @@ h1{
 }
 
 .intro{
-    background-color: #f8a6dc;
+    background-color: #8FBC8F;
     margin: -30px 280px 0px 280px;
     border-radius: 10px;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid black;
     position: absolute;
     padding-bottom: 20px;
 }
 
 .library{
     font-size: 30px;
-    margin: 0px 300px 0px 300px;
+    margin: 0px 250px 0px 250px;
 }
 
 .objective{
@@ -87,8 +89,8 @@ h1{
 .container{
     margin-bottom: 350px;
 }
-    </style>
-</head>
+</style>
+
 <body>
     <header>
         <img class="logo" src="img/uitm-logo.png">
@@ -98,8 +100,8 @@ h1{
     </header>
 
     <nav class="nav">
-        <a class="link" id="create" th:href="@{/create}">Create Account</a>
-        <a class="link" th:href="@{/login}">Login</a>
+        <a class="link" id="create" th:href="@{/updateUser}">Update Account</a>
+        <a class="link" th:href="@{/viewUser}">View Account</a>
     </nav>
 
     <div class="container">
