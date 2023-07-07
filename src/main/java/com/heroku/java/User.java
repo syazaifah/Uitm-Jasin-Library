@@ -2,15 +2,17 @@ package com.heroku.java;
 
 public class User {
     private String name;
-    private String studentID;
-    private String phoneNumber;
+    private String id;
+    private String phone;
     private String email;
+    private String password;
 
-    public User(String name, String studentID, String phoneNumber, String email) {
+    public User(String name, String id, String phone, String email, String password) {
         this.name = name;
-        this.studentID = studentID;
-        this.phoneNumber = phoneNumber;
+        this.id = id;
+        this.phone = phone;
         this.email = email;
+        this.password = password;
     }
 
     public String getName() {
@@ -21,20 +23,20 @@ public class User {
         this.name = name;
     }
 
-    public String getStudentID() {
-        return studentID;
+    public String getId() {
+        return id;
     }
 
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -46,6 +48,10 @@ public class User {
     }
 
     public String getPassword() {
-        return null;
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

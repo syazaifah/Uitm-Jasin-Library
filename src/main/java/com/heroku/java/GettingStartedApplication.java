@@ -31,7 +31,10 @@ public class GettingStartedApplication {
         return "create";
     }
 
-    
+     @GetMapping("/createAccUser")
+    public String createAccUser() {
+        return "createAccUser";
+    }
 
     @GetMapping("/createAccFormLib")
     public String createAccFormLib() {
@@ -48,9 +51,9 @@ public class GettingStartedApplication {
         return "loginUser";
     }
 
-    @GetMapping("/loginLibrarian")
-    public String loginLibrarian() {
-        return "loginLibrarian";
+    @GetMapping("/loginLib")
+    public String loginLib() {
+        return "loginLib";
     }
 
      @GetMapping("/userHome")

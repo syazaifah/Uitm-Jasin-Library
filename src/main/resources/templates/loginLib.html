@@ -126,19 +126,18 @@ input[type="text"], input[type="email"]{
     <div class="container">
         <fieldset id="adCreate">
             <h2 class="form">
-                LOGIN FORM
+                LOGIN LIBRARIAN FORM
             </h2>
             <fieldset id="create">
-                            
-                <label class="studentId">Librarian ID :</label><br>
-                <input type="text" name="id" required><br><br><br>
-                            
-                <label class="email">Email : </label><br>
-                <input type="email" class="email" required><br><br>
+                <form th:action="@{/loginLib}" method="post">
+                <label class="id">Librarian ID :</label><br>
+                <input type="text" name="id" required><br><br>
 
-                <a  th:href="@{/index}">
-                    <br><button type="submit" class="btn">Login</button>
-                </a>
+                <label class="password">Password : </label><br>   
+                <input type="password" name="password" required><br><br>
+
+                <button class="btn" type="submit">Login</button>
+                </form>
             </fieldset>
         </fieldset>
     </div>

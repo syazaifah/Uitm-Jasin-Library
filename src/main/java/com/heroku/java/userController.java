@@ -24,21 +24,22 @@ public class userController {
         this.dataSource = dataSource;
     }
 
-    @GetMapping("/createAccFormUser")
-    public String createAccForm() {
-        return "createAccFormUser";
+    @GetMapping("/createAccUser")
+    public String createAccUser() {
+        return "createAccUser";
     }
 
-    @PostMapping("/createAccFormUser")
-    public String addAccount(HttpSession session, @ModelAttribute("createAccCust") User user) {
+    @PostMapping("/createAccUser")
+    public String addAccount(HttpSession session, @ModelAttribute("createAccUser") User user) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "INSERT INTO user2 (name, student_id, phone_number, email) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO user2 (name, id, phone_number, email, password) VALUES (?,?,?,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setString(1, user.getName());
-            statement.setString(2, user.getStudentID());
-            statement.setString(3, user.getPhoneNumber());
+            statement.setString(2, user.getId());
+            statement.setString(3, user.getPhone());
             statement.setString(4, user.getEmail());
+            statement.setString(4, user.getPassword());
 
             statement.executeUpdate();
 
@@ -53,8 +54,14 @@ public class userController {
         }
     }
 
+    /**
+     * @param session
+     * @param user
+     * @param model
+     * @return
+     */
     @PostMapping("/loginUser")
-    public String homePage(HttpSession session, @ModelAttribute("loginUser") User user, Model model) {
+    public String userHome(HttpSession session, @ModelAttribute("loginUser") User user, Model model) {
         try (Connection connection = dataSource.getConnection()) {
             String sql = "SELECT email, password FROM user";
             Statement statement = connection.createStatement();
@@ -63,27 +70,20 @@ public class userController {
             String returnPage = "";
 
             while (resultSet.next()) {
-                String name = resultSet.getString("name");
                 String email = resultSet.getString("email");
-         
-                if (name.equals(user.getName()) && email.equals(user.getEmail()) ) {
-                    session.setAttribute("name", user.getName());
+                String password = resultSet.getString("password");
+
+                if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
                     session.setAttribute("email", user.getEmail());
+                    session.setAttribute("password", user.getPassword());
                     returnPage = "redirect:/userHome";
                     break;
                 } else {
-                    returnPage = "/loginUser";
+                    returnPage = "/userLogin";
                 }
             }
-
-            connection.close();
-            return returnPage;
-        } catch (Throwable t) {
-            t.printStackTrace();
-            return "/loginUser";
         }
-    }
-
+        
     @PostMapping("/viewUser")
     public String viewAccCust(HttpSession session, Model model) {
         String email = (String) session.getAttribute("email");

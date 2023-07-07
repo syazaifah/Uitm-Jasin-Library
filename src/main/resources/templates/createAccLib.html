@@ -129,21 +129,24 @@
                 CREATE ACCOUNT FORM
             </h2>
             <fieldset id="create">
+                <form th:action="@{/createAccLib}" method="post">
                 <label class="name">Name :</label><br>
-                <input type="text" name="student" required><br><br>
+                <input type="text" name="name" required><br><br>
                             
-                <label class="studentId">Librarian ID :</label><br>
+                <label class="id">Librarian ID :</label><br>
                 <input type="text" name="id" required><br><br>
                             
                 <label class="phone">Phone Number : </label><br>
-                <input type="text" class="phone" required><br><br>
+                <input type="text" name="phone" required><br><br>
                             
-                <label class="email">Email : </label><br>
-                <input type="email" class="email" required><br><br>
+                <label class="email">Email : </label><br>   
+                <input type="email" name="email" required><br><br>
 
-                <a th:href="@{/index}">
-                    <button class="btn" onclick="location.href='index.html'">Create</button>
-                </a>
+                <label class="password">Password : </label><br>   
+                <input type="password" name="password" required><br><br>
+                
+                <button class="btn" type="submit">Create</button>
+                </form>
             </fieldset>
         </fieldset>
     </div>
