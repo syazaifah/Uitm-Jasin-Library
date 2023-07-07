@@ -3,6 +3,7 @@ package com.heroku.java;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -23,10 +24,15 @@ public class userController {
         this.dataSource = dataSource;
     }
 
-    @PostMapping("/createAccCust")
+    @GetMapping("/createAccFormUser")
+    public String createAccForm() {
+        return "createAccFormUser";
+    }
+
+    @PostMapping("/createAccFormUser")
     public String addAccount(HttpSession session, @ModelAttribute("createAccCust") User user) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "INSERT INTO customer (name, address, email, password) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO user2 (name, student_id, phone_number, email) VALUES (?,?,?,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setString(1, user.getName());

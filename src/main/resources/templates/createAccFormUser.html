@@ -3,7 +3,8 @@
 <head>
     <title>UiTM Jasin Library System</title>
     <link rel="icon" type="image/x-icon" href="img/book.png">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <style>
         
 body{
@@ -128,21 +129,21 @@ input[type="text"], input[type="email"]{
                 CREATE ACCOUNT FORM
             </h2>
             <fieldset id="create">
+                <form th:action="@{/createAccFormUser}" method="post">
                 <label class="name">Name :</label><br>
-                <input type="text" name="user" required><br><br>
+                <input type="text" name="name" required><br><br>
                             
                 <label class="studentId">User ID :</label><br>
-                <input type="text" name="id" required><br><br>
+                <input type="text" name="studentID" required><br><br>
                             
                 <label class="phone">Phone Number : </label><br>
-                <input type="text" class="phone" required><br><br>
+                <input type="text" name="phoneNumber" required><br><br>
                             
-                <label class="email">Email : </label><br>
-                <input type="email" class="email" required><br><br>
+                <label class="email">Email : </label><br>   
+                <input type="email" name="email" required><br><br>
 
-                <a th:href="@{/index}">
-                    <button class="btn" onclick="location.href='index.html'">Create</button>
-                </a>
+                <button class="btn" type="submit">Create</button>
+                </form>
             </fieldset>
         </fieldset>
     </div>

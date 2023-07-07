@@ -31,37 +31,34 @@ public class GettingStartedApplication {
         return "create";
     }
 
-    @GetMapping("createAccFormUser")
-    public String createAccForm() {
-        return "createAccFormUser";
-    }
+    
 
-    @GetMapping("createAccFormLib")
+    @GetMapping("/createAccFormLib")
     public String createAccFormLib() {
         return "createAccFormLib";
     }
 
-    @GetMapping("login")
+    @GetMapping("/login")
     public String login() {
         return "login";
     }
 
-    @GetMapping("loginUser")
+    @GetMapping("/loginUser")
     public String loginUser() {
         return "loginUser";
     }
 
-    @GetMapping("loginLibrarian")
+    @GetMapping("/loginLibrarian")
     public String loginLibrarian() {
         return "loginLibrarian";
     }
 
-     @GetMapping("userHome")
+     @GetMapping("/userHome")
     public String userHome() {
         return "userHome";
     }
 
-     @GetMapping("viewUser")
+     @GetMapping("/viewUser")
     public String viewUser() {
         return "viewUser";
     }
