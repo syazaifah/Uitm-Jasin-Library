@@ -1,17 +1,18 @@
 package com.heroku.java;
-import java.sql.Date;
 
 public class Librarian {
     private String name;
-    private String librarianID;
-    private String phoneNumber;
+    private String id;
+    private String phone;
     private String email;
+    private String password;
 
-    public Librarian(String name, String librarianID, String phoneNumber, String email) {
+    public Librarian(String name, String id, String phone, String email, String password) {
         this.name = name;
-        this.librarianID = librarianID;
-        this.phoneNumber = phoneNumber;
+        this.id = id;
+        this.phone = phone;
         this.email = email;
+        this.password = password;
     }
 
     public String getName() {
@@ -22,20 +23,20 @@ public class Librarian {
         this.name = name;
     }
 
-    public String getlibrarianID() {
-        return librarianID;
+    public String getId() {
+        return id;
     }
 
-    public void setlibrarianID(String librarianID) {
-        this.librarianID = librarianID;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -44,5 +45,13 @@ public class Librarian {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
