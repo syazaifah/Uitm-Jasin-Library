@@ -1,19 +1,17 @@
 package com.heroku.java;
-
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+// import com.heroku.java.MODEL.User;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import jakarta.servlet.http.HttpSession;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 @Controller
 public class userController {
@@ -24,26 +22,25 @@ public class userController {
         this.dataSource = dataSource;
     }
 
-    @GetMapping("/createAccUser")
-    public String createAccUser() {
-        return "createAccUser";
+    @GetMapping("/createAccCust")
+    public String addCustomer(HttpSession session,User user,Model model){
+        return "createAccCust";
     }
 
     @PostMapping("/createAccUser")
-    public String addAccount(HttpSession session, @ModelAttribute("createAccUser") User user) {
+    public String addAccount(HttpSession session, @ModelAttribute("user") User user) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "INSERT INTO user2 (name, id, phone_number, email, password) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO user2 (name, id, phone_number, email, password) VALUES (?,?,?,?,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setString(1, user.getName());
             statement.setString(2, user.getId());
             statement.setString(3, user.getPhone());
             statement.setString(4, user.getEmail());
-            statement.setString(4, user.getPassword());
+            statement.setString(5, user.getPassword());
 
             statement.executeUpdate();
 
-            connection.close();
             return "redirect:/loginUser";
         } catch (SQLException sqe) {
             sqe.printStackTrace();
@@ -53,37 +50,42 @@ public class userController {
             return "redirect:/";
         }
     }
+}
+/** 
+    @GetMapping("/loginUser")
+    public String showLoginForm(Model model) {
+        model.addAttribute("user", User user());
+        return "userLogin";
+    }
 
-    /**
-     * @param session
-     * @param user
-     * @param model
-     * @return
-     */
     @PostMapping("/loginUser")
-    public String userHome(HttpSession session, @ModelAttribute("loginUser") User user, Model model) {
+    public String loginUser(HttpSession session, @ModelAttribute("user") User user) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT email, password FROM user";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            String sql = "SELECT email, password FROM user2 WHERE email = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, user.getEmail());
+            ResultSet resultSet = statement.executeQuery();
 
-            String returnPage = "";
-
-            while (resultSet.next()) {
-                String email = resultSet.getString("email");
+            if (resultSet.next()) {
                 String password = resultSet.getString("password");
 
-                if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
+                if (password.equals(user.getPassword())) {
                     session.setAttribute("email", user.getEmail());
                     session.setAttribute("password", user.getPassword());
-                    returnPage = "redirect:/userHome";
-                    break;
-                } else {
-                    returnPage = "/userLogin";
+                    return "redirect:/userHome";
                 }
             }
+        } catch (SQLException sqe) {
+            sqe.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         
+        return "redirect:/loginUser";
+    }
+}
+*/
+/**        
     @PostMapping("/viewUser")
     public String viewAccCust(HttpSession session, Model model) {
         String email = (String) session.getAttribute("email");
@@ -137,6 +139,6 @@ public class userController {
         }
     }
 }
-
+*/
     
 
