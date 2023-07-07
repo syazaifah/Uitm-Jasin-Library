@@ -22,9 +22,9 @@ public class userController {
         this.dataSource = dataSource;
     }
 
-    @GetMapping("/createAccCust")
+    @GetMapping("/createAccUser")
     public String addCustomer(HttpSession session,User user,Model model){
-        return "createAccCust";
+        return "createAccUser";
     }
 
     @PostMapping("/createAccUser")
