@@ -14,10 +14,9 @@ import javax.sql.DataSource;
 import java.sql.*;
 
 @Controller
-public class userController {
+public class userController {   
     private final DataSource dataSource;
 
-    @Autowired
     public userController(DataSource dataSource) {
         this.dataSource = dataSource;
     }
