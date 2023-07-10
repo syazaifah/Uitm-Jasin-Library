@@ -94,8 +94,8 @@ button{
     font-size: 18px;
     font-weight: 500;
     border-radius: 20px;
-    margin-left: 155px;
-    margin-top: 30px;
+    width: 120px;
+    margin: 0 10px;
 }
 
 button:hover{
@@ -114,13 +114,20 @@ button:focus{
 ::placeholder{
     color: black;
 }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
 </style>
 
 <body>
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
-            <a class="link" id="home" href="index.html">Home</a>
+            <a class="link" id="home" href="userHome.html">Home</a>
         </nav>
     </header>
 
@@ -141,9 +148,14 @@ button:focus{
                             
                 <label class="email">Email : </label><br>
                 <input type="email" class="email" placeholder="syazaifah10@gmail.com"><br><br>
-
-                <a th:href="@{/userHome}"><br><button type="submit" class="back">Back</button></a>
+                
+                <div class="button-container">
+                    <button type="button"><a href="userHome.html">Back</a></button>
+                    <button type="button"><a href="updateUser.html">Update</a></button>
+                    <button type="button"><a href="deleteUser.html">Delete</a></button>
+                </div>
             </fieldset>
+            
         </fieldset>
     </div>
     

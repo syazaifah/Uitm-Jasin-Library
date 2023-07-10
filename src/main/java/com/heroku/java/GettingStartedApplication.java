@@ -31,10 +31,13 @@ public class GettingStartedApplication {
         return "create";
     }
 
-   
+   @GetMapping("/createAccUser")
+    public String createAccFormUser() {
+        return "createAccUser";
+    }
 
-    @GetMapping("/createAccFormLib")
-    public String createAccFormLib() {
+    @GetMapping("/createAccLib")
+    public String createAccLib() {
         return "createAccFormLib";
     }
 

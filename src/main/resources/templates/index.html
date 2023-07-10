@@ -1,92 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>UiTM Jasin Library System</title>
+    <title>UiTM Jasin Library</title>
     <link rel="icon" type="image/x-icon" href="img/book.png">
-    
+
     <style>
-        
-body{
-    background-image: url("img/back2.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-}
+        body{
+            background-image: url("img/back4.jpg");
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
 
-h1{
-    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: 2.5rem;
-    font-weight: bolder;
-    text-align: center;
-    color: rgb(59, 13, 44);
-    margin-top: -120px;
-}
+        h1{
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 2.5rem;
+            font-weight: bolder;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            margin-top: -120px;
+        }
 
-.logo{
-    width: 12%;
-    margin-top: -50px;
-}
+        .logo{
+            width: 12%;
+            margin-top: -50px;
+        }
 
-.nav{
-    background-color: #f7fffa;
-    margin-left: -8px;
-    margin-right: -8px;
-    height: 80px;
-}
+        .nav{
+            background-color: #b2b8b8da;
+            margin-left: -8px;
+            margin-right: -8px;
+            height: 80px;
+        }
 
-.link{
-    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: 800;
-    font-size: 20px;
-    text-decoration: none;
-    color: rgb(0, 215, 234);
-    display: inline-block;
-    margin: 0px 55px;
-    margin-top: 25px;
-}
+        .link{
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 800;
+            font-size: 20px;
+            text-decoration: none;
+            color: rgb(53, 85, 135);
+            display: inline-block;
+            margin: 0px 55px;
+            margin-top: 25px;
+        }
 
-#create{
-    margin-left: 560px;
-}
+        #create{
+            margin-left: 570px;
+        }
 
-.kjm{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
-    border-radius: 15px;
-    margin-top: 40px;
-}
+        .kjm{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
 
-.intro{
-    background-color: #f8a6dc;
-    margin: -30px 280px 0px 280px;
-    border-radius: 10px;
-    border: 1px solid rgb(0, 0, 0);
-    position: absolute;
-    padding-bottom: 20px;
-}
+        .intro{
+            background-color: #b2b8b8da;
+            margin: -30px 280px 0px 280px;
+            border-radius: 10px;
+            border: 1px solid rgb(0, 0, 0);
+            position: absolute;
+            padding-bottom: 20px;
+        }
 
-.library{
-    font-size: 30px;
-    margin: 0px 300px 0px 300px;
-}
+        .library{
+            font-size: 30px;
+            margin: 0px 300px 0px 300px;
+        }
 
-.objective{
-    font-size: 22px;
-    font-weight: bolder;
-    margin-bottom: -10px;
-    margin-left: 10px;
+        .objective{
+            font-size: 22px;
+            font-weight: bolder;
+            margin-bottom: -10px;
+            margin-left: 10px;
+        }
 
-}
+        .mb-3{
+            margin-left: 10px;
+        }
 
-.mb-3{
-    margin-left: 10px;
-}
+        .container{
+            margin-bottom: 400px;
+        }
 
-.container{
-    margin-bottom: 350px;
-}
+        footer { 
+            text-align: center;
+            padding: 20px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            margin-top: 100px;
+            margin-left: -8px;
+            margin-right: -8px;
+        }
     </style>
 </head>
 <body>
@@ -99,7 +107,7 @@ h1{
 
     <nav class="nav">
         <a class="link" id="create" th:href="@{/create}">Create Account</a>
-        <a class="link" th:href="@{/login}">Login</a>
+        <a class="link" id="login" th:href="@{/login}">Login</a>
     </nav>
 
     <div class="container">
@@ -122,6 +130,9 @@ h1{
                 </ul>
         </div>
     </div>
-    
+
+    <footer>
+        UiTM Jasin Library &copy; 2023. All rights reserved.
+    </footer>
 </body>
 </html>

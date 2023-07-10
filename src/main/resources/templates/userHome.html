@@ -1,96 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UiTM Jasin Library System</title>
     <link rel="icon" type="image/x-icon" href="img/book.png">
+
+    <style>
+       body {
+            background-image: url("img/back6.jpg");
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        h1 {
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 2.5rem;
+            font-weight: bolder;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            margin-top: -120px;
+        }
+
+        .logo {
+            width: 12%;
+            margin-top: -50px;
+        }
+
+        .nav {
+            background-color: #b2b8b8da;
+            margin-left: -8px;
+            margin-right: -8px;
+            height: 80px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 20px;
+        }
+
+        .link {
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 800;
+            font-size: 20px;
+            text-decoration: none;
+            color: rgb(240, 246, 255);
+            margin-left: 20px;
+        }
+
+        .search-icon {
+            width: 24px;
+            height: 24px;
+            fill: #000;
+            cursor: pointer;
+        }
+
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .link {
+        font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-weight: 800;
+        font-size: 20px;
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        margin-left: 20px;
+        display: inline-block;
+        padding: 10px;
+    }
+
+    .link:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+    }
+    </style>
+
+    <script>
+        function searchBooks() {
+            // Get the search query from the user
+            var searchQuery = prompt("Enter book title:");
+
+            // Perform search logic
+            if (searchQuery) {
+                // Perform search based on the search query
+                console.log("Searching for book: " + searchQuery);
+                // Add your search implementation logic here
+            }
+        }
+
+        function logout() {
+            // Show confirmation pop-up
+            var confirmLogout = confirm("Are you sure you want to logout?");
+
+            // Perform logout logic if user confirms
+            if (confirmLogout) {
+                // Redirect to index.html
+                window.location.href = "index.html";
+            }
+        }
+
+        function openProfile() {
+            // Redirect to profileUser.html
+            window.location.href = "profileUser.html";
+        }
+    </script>
 </head>
-
-<style>
-body{
-    background-image: url("img/back2.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-}
-
-h1{
-    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: 2.5rem;
-    font-weight: bolder;
-    text-align: center;
-    color: white;
-    margin-top: -120px;
-}
-
-.logo{
-    width: 12%;
-    margin-top: -50px;
-}
-
-.nav{
-    background-color: #006400;
-    margin-left: -8px;
-    margin-right: -8px;
-    height: 80px;
-}
-
-.link{
-    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: 800;
-    font-size: 20px;
-    text-decoration: none;
-    color: white;
-    display: inline-block;
-    margin: 0px 55px;
-    margin-top: 25px;
-}
-
-#create{
-    margin-left: 500px;
-}
-
-.kjm{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
-    border-radius: 15px;
-    margin-top: 40px;
-}
-
-.intro{
-    background-color: #8FBC8F;
-    margin: -30px 280px 0px 280px;
-    border-radius: 10px;
-    border: 1px solid black;
-    position: absolute;
-    padding-bottom: 20px;
-}
-
-.library{
-    font-size: 30px;
-    margin: 0px 250px 0px 250px;
-}
-
-.objective{
-    font-size: 22px;
-    font-weight: bolder;
-    margin-bottom: -10px;
-    margin-left: 10px;
-
-}
-
-.mb-3{
-    margin-left: 10px;
-}
-
-.container{
-    margin-bottom: 350px;
-}
-</style>
-
 <body>
     <header>
         <img class="logo" src="img/uitm-logo.png">
@@ -99,31 +117,18 @@ h1{
         </h1>
     </header>
 
+    
     <nav class="nav">
-        <a class="link" id="create" th:href="@{/updateUser}">Update Account</a>
-        <a class="link" th:href="@{/viewUser}">View Account</a>
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" onclick="searchBooks()">
+            <path d="M14.5 13h-.8l-.3-.3c1.1-1.3 1.8-3 1.8-4.7C15.2 3.6 11.6 0 7.5 0S0 3.6 0 7.7s3.6 7.7 7.7 7.7c1.7 0 3.4-.5 4.7-1.8l.3.3v.8l5 5 1.5-1.5-5-5zm-7 0C4.6 13 2 10.4 2 7.7S4.6 2.5 7.3 2.5s5.3 2.6 5.3 5.3-2.6 5.2-5.3 5.2z"/>
+        </svg>
+        <a class="link" href="#" onclick="logout()">Logout</a>
+        <svg class="profile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" onclick="openProfile()">
+            <path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4zm0-10c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6 2.7-6 6-6z"/>
+        </svg>
     </nav>
 
-    <div class="container">
-        <img class="kjm" src="img/kjm.png">
+    <!-- Rest of your code -->
 
-        <div class="intro">
-            <h2 class="library">
-                UiTM JASIN LIBRARY
-            </h2>
-
-            <p class="objective">Objectives</p>
-            <p class="mb-3">To enhance the knowledge and expertise of Bumiputeras in all fields of study through professional programmes, research work and community service based on moral values and professional ethics.</p>
-                <ul class="objective-list">
-                    <li class="obj">To empower the delivery of UiTM's library services as a center of information excellence that always remained relevant, referred and respected.</li>
-                    <li class="obj">To serve a comprehensive, up to date and relevance knowledge resources in various physically and virtually format.</li>
-                    <li class="obj">To provide a conducive environment and facilities for teaching, learning and research matters.</li>
-                    <li class="obj">To develop a latest information technology and communication facilities based on customer needs.</li>
-                    <li class="obj">To strengthen human capital through Budaya PERDANA for PUiTM communities.</li>
-                    <li class="obj">To enrich relation and cooperation with external organisation in industrial network.</li>
-                </ul>
-        </div>
-    </div>
-    
 </body>
 </html>

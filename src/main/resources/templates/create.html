@@ -5,112 +5,125 @@
     <link rel="icon" type="image/x-icon" href="img/book.png">
 
     <style>
+        body{
+            background-image: url("img/back4.jpg");
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-body{
-    background-image: url("img/back2.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-}
+        .logo{
+            width: 12%;
+        }
 
-.logo{
-    width: 12%;
-}
+        .nav{
+            background-color:#3c5d68;
+            position: relative;
+            display: flex;
+            margin-left: -8px;
+            margin-right: -8px;
+            margin-top: -8px;
+            height: 80px;
+            font-size: 1.4rem;
+            align-items: center;
+        }
 
-.nav{
-    background-color:#ffffff;
-    position: relative;
-    display: flex;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-top: -8px;
-    height: 80px;
-    font-size: 1.4rem;
-    align-items: center;
-}
+        .link{
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 800;
+            font-size: 20px;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            padding: 10px;
+            display:inline;
+            margin-left: 20px;
+        } 
 
-.link{
-    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: 800;
-    font-size: 20px;
-    text-decoration: none;
-    color: rgb(59, 13, 44);
-    padding: 10px;
-    display:inline;
-    margin-left: 20px;
-} 
+        .intro{
+            background-color: #3c5d68;
+            margin: 30px 0px 0px 30px;
+            border-radius: 10px;
+            border: 1px solid black;
+            position: absolute;
+            padding-bottom: 20px;
+            padding-top: 20px;
+            width: 30%;
+        }
 
-.intro{
-    background-color: #86bed0;
-    margin: 30px 0px 0px 30px;
-    border-radius: 10px;
-    border: 1px solid black;
-    position: absolute;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    width: 30%;
-}
+        .library{
+            color:black;
+            font-weight: 800;
+            font-size: 30px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-left: 80px;
+            padding-top: 30px;
+        }
 
-.library{
-    color:black;
-    font-weight: 800;
-    font-size: 30px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 80px;
-    padding-top: 30px;
-}
+        .as{
+            font-size: 23px;
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 700;
+            margin-left: 212px;
+            color: white;
+        }
 
-.as{
-    font-size: 23px;
-    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: 700;
-    margin-left: 212px;
-}
+        button{
+            width: 150px;
+            height: 31px;
+            color: black;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-left: 20px;
+            background-color: #bbd9ed;
+            border-radius: 5px;
+        }
 
-button{
-    width: 150px;
-    height: 31px;
-    color: black;
-    font-weight: bold;
-    margin-top: 40px;
-    margin-left: 20px;
-    background-color: #0786db;
-    border-radius: 5px;
-}
+        .student{
+            margin-left: 65px;
+        }
 
-.student{
-    margin-left: 65px;
-}
+        .student:hover, .librarian:hover{
+            background-color: #8fb1bc;
+        }
 
-.student:hover, .librarian:hover{
-    background-color: #8fb1bc;
-}
+        .student:focus, .librarian:focus{
+            background-color: #8fb1bc;
+            outline: none;
+        }
 
-.student:focus, .librarian:focus{
-    background-color: #8fb1bc;
-    outline: none;
-}
+        .container{
+            border-radius: 10px;
+            background-color:#b2b8b8da;
+            margin-top: 100px;
+            margin-left: 480px;
+            width: 525px;
+            height: 320px;
+        }
 
-.container{
-    border-radius: 10px;
-    background-color:#f2f9ee;
-    margin-top: 100px;
-    margin-left: 480px;
-    width: 525px;
-    height: 320px;
-}
+        #home{
+            margin-left: 1250px;
+        }
 
-#home{
-    margin-left: 1120px;
-}
+        footer { 
+            text-align: center;
+            padding: 20px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            margin-top: auto;
+            margin-left: -8px;
+            margin-right: -8px;
+            color: #000000;
+        }
     </style>
 </head>
 <body>
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
-            <a class="link" id="home" th:href="@{index}">Home</a>
-            <a class="link" href="#">Book Cart</a>
+            <a class="link" id="home" th:href="@{/index}">Home</a>
         </nav>
     </header>
 
@@ -120,14 +133,18 @@ button{
         </h2>
         <div class="intro">
             <label class="as">AS :</label><br>
-                <a th:href="@{/createAccUser}">
-                    <button type="submit" class="student">User</button>
-                </a>
-                <a th:href="@{/createAccLib}">
-                    <button type="submit" class="librarian">Librarian</button>
-                </a>
+            <a th:href="@{/createAccUser}">
+                <button type="submit" class="student">User</button>
+            </a>
+            <a th:href="@{/createAccLib}">
+                <button type="submit" class="librarian">Librarian</button>
+            </a>
         </div>
     </div>
+
+    <footer>
+        UiTM Jasin Library &copy; 2023. All rights reserved.
+    </footer>
     
 </body>
 </html>

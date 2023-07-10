@@ -1,121 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UiTM Jasin Library System</title>
     <link rel="icon" type="image/x-icon" href="img/book.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    
 </head>
 
-<style>
-body{
-    background-image: url("img/back2.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-}
-
-.logo{
-    width: 12%;
-}
-
-.nav{
-    background-color:#1c441c;
-    position: relative;
-    display: flex;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-top: -8px;
-    height: 80px;
-    font-size: 1.4rem;
-    align-items: center;
-}
-
-.link{
-    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: 800;
-    font-size: 20px;
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    display:inline;
-    margin-left: 20px;
-} 
-
-.form{
-    color:black;
-    font-weight: 800;
-    font-size: 27px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 155px;
-    margin-top: -5px;
-}
-
-#adCreate{
-    border-radius: 10px;
-    background-color:#f2f9ee;
-    margin-top: 70px;
-    margin-left: 440px;
-    width: 500px;
-    height: 400px;
-}
-
-#create{
-    margin-top: 5px;
-    margin-left: 20px;
-    width: 425px;
-    height: 258px;
-    border-style: solid;
-    border-width: 3px;
-    border-color: black;
-    font-size: 16px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 600;
-    color: black;
-    padding-top: 25px;
-}
-
-label{
-    margin-left: 90px;
-}
-
-input[type="text"], input[type="email"]{
-    margin-left: 90px;
-    border-radius: 5px;
-    background-color: gainsboro;
-    border-color: black;
-    width: 240px;
-    height: 20px;
-}
-
-.btn{
-    padding: 5px 40px;
-    background:#406b40;
-    border-color: black;
-    outline: none;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 500;
-    border-radius: 20px;
-    margin-left: 155px;
-    margin-top: 65px;
-}
-
-.btn:hover{
-    background-color: #8FBC8F;
-}
-
-.btn:focus{
-    background-color: #85ad85;
-    outline: none;
-}
-
-#home{
-    margin-left: 1150px;
-}
-</style>
+<style>      
+    body{
+        background-image: url("img/back2.jpg");
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+    }
+    
+    .logo{
+        width: 12%;
+    }
+    
+    .nav{
+        background-color:#ffffff;
+        position: relative;
+        display: flex;
+        margin-left: -8px;
+        margin-right: -8px;
+        margin-top: -8px;
+        height: 80px;
+        font-size: 1.4rem;
+        align-items: center;
+    }
+    
+    .link{
+        font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-weight: 800;
+        font-size: 20px;
+        text-decoration: none;
+        color: rgb(0, 0, 0)te;
+        padding: 10px;
+        display:inline;
+        margin-left: 20px;
+    } 
+    
+    .form{
+        color:black;
+        font-weight: 800;
+        font-size: 27px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-left: 65px;
+        margin-top: -5px;
+    }
+    
+    #adCreate{
+        border-radius: 10px;
+        background-color:#f2f9ee;
+        margin-top: 70px;
+        margin-left: 440px;
+        width: 500px;
+        height: 400px;
+    }
+    
+    #create{
+        margin-top: 5px;
+        margin-left: 20px;
+        width: 425px;
+        height: 258px;
+        border-style: solid;
+        border-width: 3px;
+        border-color: black;
+        font-size: 16px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: 600;
+        color: black;
+    }
+    
+    label{
+        margin-left: 90px;
+    }
+    
+    input[type="text"], input[type="email"], input[type="password"]{
+        margin-left: 90px;
+        border-radius: 5px;
+        background-color: gainsboro;
+        border-color: black;
+        width: 240px;
+        height: 20px;
+    }
+    
+    .btn{
+        padding: 5px 40px;
+        background: #0786db;
+        border-color: black;
+        outline: none;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 20px;
+        margin-left: 155px;
+        margin-top: 30px;
+    }
+    
+    .btn:hover{
+        background-color:  #8fb1bc;
+    }
+    
+    .btn:focus{
+        background-color: #85ad85;
+        outline: none;
+    }
+    
+    #home{
+        margin-left: 1120px;
+    }
+        </style>
 
 <body>
+
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
@@ -126,17 +127,17 @@ input[type="text"], input[type="email"]{
     <div class="container">
         <fieldset id="adCreate">
             <h2 class="form">
-                LOGIN LIBRARIAN FORM
+                LOGIN ACCOUNT FORM
             </h2>
             <fieldset id="create">
-                <form th:action="@{/loginLib}" method="post">
-                <label class="id">Librarian ID :</label><br>
-                <input type="text" name="id" required><br><br>
+                <form th:action="@{/loginLib}" method="post">           
+                <label class="email">Email : </label><br>   
+                <input type="email" name="email" required><br><br>
 
                 <label class="password">Password : </label><br>   
                 <input type="password" name="password" required><br><br>
-
-                <button class="btn" type="submit">Login</button>
+                
+                <button class="btn" type="submit">Create</button>
                 </form>
             </fieldset>
         </fieldset>

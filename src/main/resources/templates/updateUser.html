@@ -85,30 +85,34 @@ input[type="text"], input[type="email"]{
     height: 20px;
 }
 
-button{
-    padding: 5px 40px;
-    background:#406b40;
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.button-container button {
+    padding: 10px 40px;
+    background: #406b40;
     border-color: black;
     outline: none;
     cursor: pointer;
     font-size: 18px;
     font-weight: 500;
     border-radius: 20px;
-    margin-left: 55px;
-    margin-top: 30px;
+    margin: 0 10px;
+    width: 150px;
 }
 
-button:hover{
-    background-color: #8FBC8F;
+.success-message {
+    display: none;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
 }
 
-button:focus{
-    background-color: #85ad85;
-    outline: none;
-}
-
-#home{
-    margin-left: 1150px;
+#success-message.show {
+    display: block;
 }
 </style>
 
@@ -138,11 +142,21 @@ button:focus{
                 <label class="email">Email : </label><br>
                 <input type="email" class="email" required><br><br>
 
-                <a th:href="@{/userHome}"><br><button type="submit" class="update">Update</button></a>
-                <a th:href="@{/userHome}"><button type="submit" class="back">Back</button></a>
+                <div class="button-container">
+                    <a href="userHome.html"><button type="button" class="back">Back</button></a>
+                    <button type="button" class="update" onclick="showSuccessMessage()">Update</button>
+                </div>
+                
+                <div id="success-message" class="success-message">Update Successfully</div>
             </fieldset>
         </fieldset>
     </div>
-    
+
+    <script>
+        function showSuccessMessage() {
+            var message = document.getElementById("success-message");
+            message.classList.add("show");
+        }
+    </script>
 </body>
 </html>
