@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.heroku.Modal.User;
+import com.heroku.Modal.Librarian;
 
 import jakarta.servlet.http.HttpSession;
 import javax.sql.DataSource;
@@ -18,30 +18,30 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 @Controller
-public class UserController {
+public class LibrarianController {
     private final DataSource dataSource;
 
     @Autowired
-    public UserController(DataSource dataSource) {
+    public LibrarianController(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
-    @PostMapping("/createAccUser")
-    public String addAccount(HttpSession session, @ModelAttribute("createAccCust") User user) {
+    @PostMapping("/createAccLib")
+    public String addAccount(HttpSession session, @ModelAttribute("createAccLib") Librarian librarian) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "INSERT INTO userdata (name, user_id, phone_number, email, password) VALUES (?,?,?,?,?)"; 
+            String sql = "INSERT INTO libdata (name, lib_id, phone_number, email, password) VALUES (?,?,?,?,?)"; 
             PreparedStatement statement = connection.prepareStatement(sql);
 
-            statement.setString(1, user.getName());
-            statement.setString(2, user.getId());
-            statement.setString(3, user.getPhone());
-            statement.setString(4, user.getEmail());
-            statement.setString(5, user.getPassword());
+            statement.setString(1, librarian.getName());
+            statement.setString(2, librarian.getId());
+            statement.setString(3, librarian.getPhone());
+            statement.setString(4, librarian.getEmail());
+            statement.setString(5, librarian.getPassword());
 
             statement.executeUpdate();
 
             connection.close();
-            return "redirect:/loginUser";
+            return "redirect:/loginLib";
         } catch (SQLException sqe) {
             sqe.printStackTrace();
             return "redirect:/";
@@ -51,16 +51,16 @@ public class UserController {
         }
     }
 
-    @GetMapping("/createAccUser")
-    public String addUser(HttpSession session,User user,Model model){
-        return "createAccUser";
+    @GetMapping("/createAccLib")
+    public String addUser(HttpSession session,Librarian librarian,Model model){
+        return "createAccLib";
     }
 
 
-    @PostMapping("/loginUser")
-    public String userHome(HttpSession session, @ModelAttribute("userLogin") User user, Model model) {
+    @PostMapping("/loginLib")
+    public String libHome(HttpSession session, @ModelAttribute("loginLib") Librarian librarian, Model model) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT email, password FROM userdata";
+            String sql = "SELECT email, password FROM libdata";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -70,12 +70,12 @@ public class UserController {
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
 
-                if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
-                    session.setAttribute("email", user.getEmail());
-                    returnPage = "redirect:/userHome";
+                if (email.equals(librarian.getEmail()) && password.equals(librarian.getPassword())) {
+                    session.setAttribute("email", librarian.getEmail());
+                    returnPage = "redirect:/libHome";
                     break;
                 } else {
-                    returnPage = "/loginUser";
+                    returnPage = "/loginLib";
                 }
             }
 
@@ -83,38 +83,38 @@ public class UserController {
             return returnPage;
         } catch (Throwable t) {
             t.printStackTrace();
-            return "/userLogin";
+            return "/loginLib";
         }
     }
 
-    @GetMapping("/userHome")
+    @GetMapping("/libHome")
     public String userHome() {
-        return "userHome";
+        return "libHome";
     }
     
 
-    @GetMapping("/profileUser")
-    public String viewprofileUser(HttpSession session, Model model) {
+    @GetMapping("/profileLib")
+    public String viewProfileLib(HttpSession session, Model model) {
     String email = (String) session.getAttribute("email");
 
     if (email != null) { 
         try {
             Connection connection = dataSource.getConnection();
-            String sql = "SELECT name, user_id, phone_number, password FROM userdata WHERE email=?";
+            String sql = "SELECT name, lib_id, phone_number, password FROM libdata WHERE email=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
                 String name = resultSet.getString("name");
-                String user_id= resultSet.getString("user_id");
+                String lib_id = resultSet.getString("lib_id");
                 String phone_number = resultSet.getString("phone_number");
                 String password = resultSet.getString("password");
                 
                 // Set attributes
-                User profileUser = new User(name, user_id, phone_number,email, password);
-                model.addAttribute("profileUser", profileUser);
-                return "profileUser";
+                Librarian profileLib = new Librarian(name, lib_id, phone_number, email, password);
+                model.addAttribute("profileLib", profileLib);
+                return "profileLib";
             } else {
                 return "error";
             }
@@ -124,58 +124,59 @@ public class UserController {
     }
 
     return "error";
-    }
+}
 
-    @PostMapping("/profileUser")
-    public String profileUser(HttpSession session, Model model) {
-        String email = (String) session.getAttribute("email");
 
-        if (email != null) {
-            try (Connection connection = dataSource.getConnection()) {
-                String sql = "SELECT name, user_id, phone_number, email, password FROM userdata WHERE email=?";
-                PreparedStatement statement = connection.prepareStatement(sql);
-                statement.setString(1, email);
-                ResultSet resultSet = statement.executeQuery();
+@PostMapping("/profileLib")
+public String profileLib(HttpSession session, Model model) {
+    String email = (String) session.getAttribute("email");
 
-                if (resultSet.next()) {
-                   String name = resultSet.getString("name");
-                String user_id= resultSet.getString("user_id");
+    if (email != null) {
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT name, lib_id, phone_number, email, password FROM libdata WHERE email=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String lib_id = resultSet.getString("lib_id");
                 String phone_number = resultSet.getString("phone_number");
                 String password = resultSet.getString("password");
 
-                    System.out.println("name from db: " + name);
-                    User profileUser = new User(name, user_id, phone_number, email, password);
-                    model.addAttribute("profileUser", profileUser);
-                    System.out.println("Session profileUser: " + model.getAttribute("profileUser"));
-                    return "profileUser";
-                } else {
-                    return "error";
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("name from db: " + name);
+                Librarian profileLib = new Librarian(name, lib_id, phone_number, email, password);
+                model.addAttribute("profileLib", profileLib);
+                System.out.println("Session profileLib: " + model.getAttribute("profileLib"));
+                return "profileLib";
+            } else {
+                return "error";
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        return "error";
     }
 
+    return "error";
+}
+
     
-    @PostMapping("/updateUser")
-    public String updateUser(HttpSession session, @ModelAttribute("updateAcc") User user, Model model) {
+    @PostMapping("/updateLib")
+    public String updateLib(HttpSession session, @ModelAttribute("updateAcc") Librarian librarian, Model model) {
     try (Connection connection = dataSource.getConnection()) {
-        String sql = "UPDATE userdata SET name=?, phone_number=?, password=? WHERE email=?";
+        String sql = "UPDATE libdata SET name=?, phone_number=?, password=? WHERE email=?";
         PreparedStatement statement = connection.prepareStatement(sql);
 
-        statement.setString(1, user.getName());
-        statement.setString(2, user.getPhone());
-        statement.setString(3, user.getPassword());
+        statement.setString(1, librarian.getName());
+        statement.setString(2, librarian.getPhone());
+        statement.setString(3, librarian.getPassword());
         statement.setString(4, (String) session.getAttribute("email"));
 
         int rowsUpdated = statement.executeUpdate();
 
         if (rowsUpdated > 0) {
             // Update successful
-            return "redirect:/profileUser";
+            return "redirect:/profileLib";
         } else {
             // Update failed
             model.addAttribute("error", "Failed to update account");
@@ -189,13 +190,13 @@ public class UserController {
 }
 
 
-    @PostMapping("/deleteUser")
-    public String deleteUser(HttpSession session, Model model) {
+    @PostMapping("/deleteLib")
+    public String deleteLib(HttpSession session, Model model) {
         String email = (String) session.getAttribute("email");
 
         if (email != null) {
             try (Connection connection = dataSource.getConnection()) {
-                String sql = "DELETE FROM userdata WHERE email=?";
+                String sql = "DELETE FROM libdata WHERE email=?";
                 PreparedStatement statement = connection.prepareStatement(sql);
                 statement.setString(1, email);
 

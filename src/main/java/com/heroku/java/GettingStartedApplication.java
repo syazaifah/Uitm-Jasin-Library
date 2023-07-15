@@ -26,19 +26,9 @@ public class GettingStartedApplication {
         return "index";
     }
     
-    @GetMapping("create")
+    @GetMapping("/create")
     public String create() {
         return "create";
-    }
-
-   @GetMapping("/createAccUser")
-    public String createAccUser() {
-        return "createAccUser";
-    }
-
-    @GetMapping("/createAccLib")
-    public String createAccLib() {
-        return "createAccLib";
     }
 
     @GetMapping("/login")
@@ -54,20 +44,6 @@ public class GettingStartedApplication {
     @GetMapping("/loginLib")
     public String loginLib() {
         return "loginLib";
-    }
-
-     @GetMapping("/userHome")
-    public String userHome() {
-        return "userHome";
-    }
-
-     @GetMapping("/viewUser")
-    public String viewUser() {
-        return "viewUser";
-    }
-     @GetMapping("updateUser")
-    public String updateUser() {
-        return "updateUser";
     }
 
     @GetMapping("/database")

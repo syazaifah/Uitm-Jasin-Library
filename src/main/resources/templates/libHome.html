@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UiTM Jasin Library System</title>
+    <link rel="icon" type="image/x-icon" href="img/book.png">
+    <style>
+        body {
+            background-image: url("img/back6.jpg");
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        h1 {
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 2.5rem;
+            font-weight: bolder;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            margin-top: -120px;
+        }
+
+        .logo {
+            width: 12%;
+            margin-top: -50px;
+        }
+
+        .nav {
+            background-color: #b2b8b8da;
+            margin-left: -8px;
+            margin-right: -8px;
+            height: 80px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 20px;
+        }
+
+        .link {
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 800;
+            font-size: 20px;
+            text-decoration: none;
+            color: rgb(240, 246, 255);
+            margin-left: 20px;
+        }
+
+        .search-icon {
+            width: 24px;
+            height: 24px;
+            fill: #000;
+            cursor: pointer;
+        }
+
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .link {
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 800;
+            font-size: 20px;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            margin-left: 20px;
+            display: inline-block;
+            padding: 10px;
+        }
+
+        .link:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="img/uitm-logo.png">
+        <h1 class="welcome">
+            Welcome to UiTM Jasin Library
+        </h1>
+    </header>
+
+    <nav class="nav">
+        <a class="link" href="bookLists.html">List of Books</a>
+        <a class="link" href="#" onclick="logout()">Logout</a>
+        <a th:href="@{/profileLib}">
+            <svg class="profile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4zm0-10c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6 2.7-6 6-6z" />
+            </svg>
+        </a>
+    </nav>
+
+    <div class="container">
+        <img class="kjm" src="img/kjm.png">
+
+        <div class="intro">
+            <h2 class="library">
+                UiTM JASIN LIBRARY
+            </h2>
+
+            <p class="objective">Objectives</p>
+            <ul class="objective-list">
+                <li class="obj">To empower the delivery of UiTM's library services as a center of information excellence that always remained relevant, referred, and respected.</li>
+                <li class="obj">To serve a comprehensive, up-to-date, and relevant knowledge resources in various physically and virtually formatted.</li>
+                <li class="obj">To provide a conducive environment and facilities for teaching, learning, and research matters.</li>
+                <li class="obj">To develop the latest information technology and communication facilities based on customer needs.</li>
+                <li class="obj">To strengthen human capital through Budaya PERDANA for PUiTM communities.</li>
+                <li class="obj">To enrich relations and cooperation with external organizations in an industrial network.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            // Show confirmation pop-up
+            var confirmLogout = confirm("Are you sure you want to logout?");
+
+            // Perform logout logic if user confirms
+            if (confirmLogout) {
+                // Redirect to index.html
+                window.location.href = "index.html";
+            }
+        }
+    </script>
+</body>
+
+</html>

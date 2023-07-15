@@ -1,16 +1,16 @@
-package com.heroku.java;
+package com.heroku.Modal;
 
 public class Librarian {
     private String name;
-    private String id;
-    private String phone;
+    private String lib_id;
+    private String phone_number;
     private String email;
     private String password;
 
-    public Librarian(String name, String id, String phone, String email, String password) {
+    public Librarian(String name, String lib_id, String phone_number, String email, String password) {
         this.name = name;
-        this.id = id;
-        this.phone = phone;
+        this.lib_id = lib_id;
+        this.phone_number= phone_number;
         this.email = email;
         this.password = password;
     }
@@ -24,19 +24,19 @@ public class Librarian {
     }
 
     public String getId() {
-        return id;
+        return lib_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String lib_id) {
+        this.lib_id = lib_id;
     }
 
     public String getPhone() {
-        return phone;
+        return phone_number;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhone(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public String getEmail() {

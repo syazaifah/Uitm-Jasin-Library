@@ -113,14 +113,25 @@
     #home{
         margin-left: 1120px;
     }
-        </style>
+    
+    footer { 
+            text-align: center;
+            padding: 20px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            margin-top: auto;
+            margin-left: -8px;
+            margin-right: -8px;
+            color: #000000;
+    }
+    </style>
 
 <body>
 
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
-            <a class="link" id="home" th:href="@{/index}">Home</a>
+            <a class="link" id="home" th:href="@{/}">Home</a>
         </nav>
     </header>
 
@@ -131,26 +142,35 @@
             </h2>
             <fieldset id="create">
                 <form th:action="@{/createAccLib}" method="post">
-                <label class="name">Name :</label><br>
-                <input type="text" name="name" required><br><br>
+                    <label class="name">Name :</label><br>
+                    <input type="text" name="name" required><br><br>
                             
-                <label class="id">Librarian ID :</label><br>
-                <input type="text" name="id" required><br><br>
+                    <label class="lib_id">User ID :</label><br>
+                    <input type="text" name="lib_id" required><br><br>
                             
-                <label class="phone">Phone Number : </label><br>
-                <input type="text" name="phone" required><br><br>
+                    <label class="phone_number">Phone Number: </label><br>
+                    <input type="tel" name="phone_number" pattern="[0-9]{10}" required><br><br>
                             
-                <label class="email">Email : </label><br>   
-                <input type="email" name="email" required><br><br>
+                    <label class="email">Email : </label><br>   
+                    <input type="email" name="email" required><br><br>
 
-                <label class="password">Password : </label><br>   
-                <input type="password" name="password" required><br><br>
-                
-                <button class="btn" type="submit">Create</button>
+                    <label class="password">Password : </label><br>   
+                    <input type="password" name="password" required><br><br>
+        
+                    <div class="btn-container">
+                        <button type="submit" class="btn">Create Account</button>
+                    </div>
                 </form>
             </fieldset>
         </fieldset>
     </div>
-    
+
+    <br><br>
+    <footer>
+        UiTM Jasin Library &copy; 2023. All rights reserved.
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"></script>
 </body>
 </html>

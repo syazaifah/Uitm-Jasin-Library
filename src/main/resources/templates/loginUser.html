@@ -111,6 +111,17 @@ input[type="email"], input[type="password"]{
 #home{
     margin-left: 1250px;
 }
+
+footer { 
+            text-align: center;
+            padding: 20px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            margin-top: auto;
+            margin-left: -8px;
+            margin-right: -8px;
+            color: #000000;
+        }
 </style>
 </head>
 <body>
@@ -118,7 +129,7 @@ input[type="email"], input[type="password"]{
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
-            <a class="link" id="home" th:href="@{/index}">Home</a>
+            <a class="link" id="home" th:href="@{/}">Home</a>
         </nav>
     </header>
 
@@ -128,18 +139,22 @@ input[type="email"], input[type="password"]{
                 LOGIN ACCOUNT FORM
             </h2>
             <fieldset id="create">  
-                <form th:action="@{/loginUser}" method="post"></form>         
+                <form th:action="@{/loginUser}" method="post">         
                 <label class="email">Email : </label><br>   
                 <input type="email" name="email" required><br><br>
 
                 <label class="password">Password : </label><br>   
                 <input type="password" name="password" required><br><br>
 
-                <button class="btn" type="submit">Create</button>
-                </form>
+                <button type="submit" class="btn">Submit</button>
+                </form><br><br>
             </fieldset>
         </fieldset>
     </div>
-    
+
+    <br><br><br>
+    <footer>
+        UiTM Jasin Library &copy; 2023. All rights reserved.
+    </footer>
 </body>
 </html>

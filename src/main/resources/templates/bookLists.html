@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UiTM Jasin Library System</title>
+    <link rel="icon" type="image/x-icon" href="img/book.png">
+</head>
+
+<style>
+body{
+    background-image: url("img/bookshelf.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.logo{
+    width: 12%;
+}
+
+.nav{
+    background-color:#1c441c;
+    position: relative;
+    display: flex;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-top: -8px;
+    height: 80px;
+    font-size: 1.4rem;
+    align-items: center;
+}
+
+.link{
+    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 800;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    display:inline;
+    margin-left: 20px;
+} 
+
+#home{
+    margin-left: 1150px;
+}
+
+.add{
+    padding: 9px 35px;
+    background:#406b40;
+    border-color: black;
+    outline: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-top: 30px;
+    color: white;
+}
+
+.add:hover{
+    background-color: #8FBC8F;
+}
+
+.add:focus{
+    background-color: #85ad85;
+    outline: none;
+}
+
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse; 
+}
+
+table{
+    width: 90%;
+    margin-top: 70px;
+    margin-left: 70px;
+}
+
+.left{
+    padding: 10px;   
+    background-color:aliceblue;
+}
+
+.title{
+    font-size: 18px;
+    padding: 9px;  
+    font-weight: 600;
+    background-color: gray;
+}
+
+.update, .delete{
+    padding: 5px 20px;
+    background:#406b40;
+    border-color: black;
+    outline: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 5px;
+    color: white;
+}
+
+.update:hover, .delete:hover{
+    background-color: #8FBC8F;
+}
+
+.update:focus, .delete:focus{
+    background-color: #85ad85;
+    outline: none;
+}
+</style>
+
+<body>
+    <header>
+        <nav class="nav">
+            <img class="logo" src="img/uitm-logo.png">
+            <a class="link" id="home" href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <a href="addBooks.html"><button type="submit" class="add">ADD BOOKS</button></a>
+
+    <table>
+        <tr>
+           <th class="title">NO</th>
+           <th class="title">BOOK'S TITLE</th>
+           <th class="title">BOOK AUTHOR</th>
+           <th class="title">PUBLISHED DATE</th>
+           <th class="title">BOOK'S GENRE</th>
+           <th class="title">BOOK'S PUBLISHER</th>
+           <th class="title">UPDATE</th>
+           <th class="title">DELETE</th>
+        </tr>
+        <tr>
+           <th class="left">1</th>
+           <th class="left">To Kill a Mocking Bird</th>
+           <th class="left">Harpee Lee</th>
+           <th class="left">1/2/2015</th>
+           <th class="left">Southern Gothic</th>
+           <th class="left">J.B. Lippincott & Co.</th>
+           <th class="left"><button type="submit" class="update">UPDATE</button></th>
+           <th class="left"><button type="submit" class="delete">DELETE</button></th>
+        </tr>
+        <tr>
+            <th class="left">2</th>
+            <th class="left">It Ends With Us</th>
+            <th class="left">Colleen Hoover</th>
+            <th class="left">2/8/2016</th>
+            <th class="left">Romance</th>
+            <th class="left">Atria Books</th>
+            <th class="left"><button type="submit" class="update">UPDATE</button></th>
+            <th class="left"><button type="submit" class="delete">DELETE</button></th>
+        <tr>
+        <tr>
+            <th class="left">3</th>
+            <th class="left">Tracy Flick Can't Win</th>
+            <th class="left">Tom Perrotta</th>
+            <th class="left">7/6/2022</th>
+            <th class="left">Comedy</th>
+            <th class="left">Scribner</th>
+            <th class="left"><button type="submit" class="update">UPDATE</button></th>
+            <th class="left"><button type="submit" class="delete">DELETE</button></th>
+        <tr>
+        </table>
+
+</body>
+</html>

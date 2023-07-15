@@ -103,13 +103,24 @@
     #home{
         margin-left: 1250px;
     }
+
+    footer { 
+            text-align: center;
+            padding: 20px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            margin-top: auto;
+            margin-left: -8px;
+            margin-right: -8px;
+            color: #000000;
+    }
 </style>
 </head>
 <body>
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
-            <a class="link" id="home" th:href="@{index}">Home</a>
+            <a class="link" id="home" th:href="@{/}">Home</a>
         </nav>
     </header>
 
@@ -119,10 +130,17 @@
         </h2>
         <div class="intro">
             <label class="as">AS :</label><br>
-                    <button type="submit" class="student" onclick="location.href='loginUser.html'">User</button>
-                    <button type="submit" class="librarian" onclick="location.href='loginLib.html'">Librarian</button>
+            <a th:href="@{/loginUser}">
+                <button type="submit" class="student">User</button>
+            </a>
+            <a th:href="@{/loginLib}">
+                <button type="submit" class="librarian">Librarian</button>
+            </a>
         </div>
     </div>
-    
+
+    <footer>
+        UiTM Jasin Library &copy; 2023. All rights reserved.
+    </footer> 
 </body>
 </html>

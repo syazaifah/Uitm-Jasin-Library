@@ -6,18 +6,18 @@
 </head>
 
 <style>
-body{
+body {
     background-image: url("img/back2.jpg");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
 }
 
-.logo{
+.logo {
     width: 12%;
 }
 
-.nav{
+.nav {
     background-color:#1c441c;
     position: relative;
     display: flex;
@@ -29,7 +29,7 @@ body{
     align-items: center;
 }
 
-.link{
+.link {
     font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-weight: 800;
     font-size: 20px;
@@ -40,8 +40,8 @@ body{
     margin-left: 20px;
 } 
 
-.form{
-    color:black;
+.form {
+    color: black;
     font-weight: 800;
     font-size: 27px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -49,16 +49,16 @@ body{
     margin-top: -5px;
 }
 
-#adCreate{
+#adCreate {
     border-radius: 10px;
-    background-color:#f2f9ee;
+    background-color: #f2f9ee;
     margin-top: 70px;
     margin-left: 440px;
     width: 500px;
     height: 400px;
 }
 
-#create{
+#create {
     margin-top: 5px;
     margin-left: 20px;
     width: 425px;
@@ -72,11 +72,12 @@ body{
     color: black;
 }
 
-label{
+label {
     margin-left: 90px;
 }
 
-input[type="text"], input[type="email"]{
+input[type="text"],
+input[type="email"] {
     margin-left: 90px;
     border-radius: 5px;
     background-color: gainsboro;
@@ -120,37 +121,39 @@ input[type="text"], input[type="email"]{
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
-            <a class="link" id="home" th:href="@{/index}">Home</a>
+            <a class="link" id="home" href="userHome.html">Home</a>
         </nav>
     </header>
 
     <div class="container">
         <fieldset id="adCreate">
             <h2 class="form">
-                UPDATE ACCOUNT FORM
+                VIEW ACCOUNT
             </h2>
             <fieldset id="create">
-                <label class="name">Name :</label><br>
-                <input type="text" name="student" required><br><br>
-                            
-                <label class="studentId">User ID :</label><br>
-                <input type="text" name="id" required><br><br>
-                            
-                <label class="phone">Phone Number : </label><br>
-                <input type="text" class="phone" required><br><br>
-                            
-                <label class="email">Email : </label><br>
-                <input type="email" class="email" required><br><br>
+                <form th:action="@{/updateUser}" method="post">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name">
+                        <label for="user_id">Student ID</label>
+                        <input type="text" id="user_id" name="user_id" placeholder="Enter your student id">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="phone_number" name="phone_number" placeholder="Enter your address">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password">
 
-                <div class="button-container">
-                    <a href="userHome.html"><button type="button" class="back">Back</button></a>
-                    <button type="button" class="update" onclick="showSuccessMessage()">Update</button>
-                </div>
-                
-                <div id="success-message" class="success-message">Update Successfully</div>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+                        
+                    
+                        <button type="submit" class="Update">Update</button>
+                </form>
             </fieldset>
         </fieldset>
     </div>
+</body>
+</html>
 
     <script>
         function showSuccessMessage() {

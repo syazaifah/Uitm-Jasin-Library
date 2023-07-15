@@ -6,18 +6,18 @@
 </head>
 
 <style>
-body {
+body{
     background-image: url("img/back2.jpg");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
 }
 
-.logo {
+.logo{
     width: 12%;
 }
 
-.nav {
+.nav{
     background-color:#1c441c;
     position: relative;
     display: flex;
@@ -29,7 +29,7 @@ body {
     align-items: center;
 }
 
-.link {
+.link{
     font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-weight: 800;
     font-size: 20px;
@@ -40,25 +40,25 @@ body {
     margin-left: 20px;
 } 
 
-.form {
-    color: black;
+.form{
+    color:black;
     font-weight: 800;
     font-size: 27px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 135px;
+    margin-left: 65px;
     margin-top: -5px;
 }
 
-#adCreate {
+#adCreate{
     border-radius: 10px;
-    background-color: #f2f9ee;
+    background-color:#f2f9ee;
     margin-top: 70px;
     margin-left: 440px;
     width: 500px;
     height: 400px;
 }
 
-#create {
+#create{
     margin-top: 5px;
     margin-left: 20px;
     width: 425px;
@@ -72,12 +72,11 @@ body {
     color: black;
 }
 
-label {
+label{
     margin-left: 90px;
 }
 
-input[type="text"],
-input[type="email"] {
+input[type="text"], input[type="email"]{
     margin-left: 90px;
     border-radius: 5px;
     background-color: gainsboro;
@@ -86,8 +85,14 @@ input[type="email"] {
     height: 20px;
 }
 
-button {
-    padding: 5px 40px;
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.button-container button {
+    padding: 10px 40px;
     background: #406b40;
     border-color: black;
     outline: none;
@@ -95,31 +100,19 @@ button {
     font-size: 18px;
     font-weight: 500;
     border-radius: 20px;
-    width: 120px;
     margin: 0 10px;
+    width: 150px;
 }
 
-button:hover {
-    background-color: #8FBC8F;
+.success-message {
+    display: none;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
 }
 
-button:focus {
-    background-color: #85ad85;
-    outline: none;
-}
-
-#home {
-    margin-left: 1150px;
-}
-
-::placeholder {
-    color: black;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+#success-message.show {
+    display: block;
 }
 </style>
 
@@ -127,41 +120,43 @@ button:focus {
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
-            <a class="link" id="home" href="userHome.html">Home</a>
+            <a class="link" id="home" th:href="@{/index}">Home</a>
         </nav>
     </header>
 
     <div class="container">
         <fieldset id="adCreate">
             <h2 class="form">
-                VIEW ACCOUNT
+                UPDATE ACCOUNT FORM
             </h2>
             <fieldset id="create">
-                <form th:action="@{/updateUser}" method="post"  th:object="${profileUser}">
-                    <label class="name">Name :</label><br>
-                    <input type="text" name="name" th:value="${profileUser?.name}" ><br><br>
-                    
-                    <!--<label class="studentId">User ID :</label><br>
-                    <input type="text" name="user_id" th:value="${profileUser?.id}"><br><br> -->
-                    
-                    <label class="phone">Phone Number : </label><br>
-                    <input type="text" name="phone" th:value="${profileUser?.phone}" ><br><br>
-                    
-                    <label class="email">Email : </label><br>
-                    <input type="email" name="email" th:value="${profileUser?.email}" ><br><br>
+                <label class="name">Name :</label><br>
+                <input type="text" name="student" required><br><br>
+                            
+                <label class="studentId">User ID :</label><br>
+                <input type="text" name="id" required><br><br>
+                            
+                <label class="phone">Phone Number : </label><br>
+                <input type="text" class="phone" required><br><br>
+                            
+                <label class="email">Email : </label><br>
+                <input type="email" class="email" required><br><br>
 
-                    <label class="password">Password : </label><br>   
-                    <input type="password" name="password" th:value="${profileUser?.password}" ><br><br>
-
-                    <div class="form-buttons">
-                        <a class="back" th:href="@{/index}">BACK</a>
+                <div class="button-container">
+                    <a href="userHome.html"><button type="button" class="back">Back</button></a>
+                    <button type="button" class="update" onclick="showSuccessMessage()">Update</button>
+                </div>
                 
-                        <input type="submit" value="UPDATE">
-                        <input type="delete" value="DELETE">
-                    </div>
-                </form>
+                <div id="success-message" class="success-message">Update Successfully</div>
             </fieldset>
         </fieldset>
     </div>
+
+    <script>
+        function showSuccessMessage() {
+            var message = document.getElementById("success-message");
+            message.classList.add("show");
+        }
+    </script>
 </body>
 </html>
