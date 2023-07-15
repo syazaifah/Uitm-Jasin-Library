@@ -91,7 +91,10 @@
     </header>
 
     <nav class="nav">
-        <a class="link" href="bookLists.html">List of Books</a>
+        <a th:href="@{/profileLib}" class="link" >Fine List</a>
+        <a th:href="@{/profileLib}" class="link" >Borrower List</a>
+        <a th:href="@{/addBookLib}" class="link" >Add Book</a>
+        <a th:href="@{/bookListLib}" class="link" >Book List</a>
         <a class="link" href="#" onclick="logout()">Logout</a>
         <a th:href="@{/profileLib}">
             <svg class="profile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -99,26 +102,6 @@
             </svg>
         </a>
     </nav>
-
-    <div class="container">
-        <img class="kjm" src="img/kjm.png">
-
-        <div class="intro">
-            <h2 class="library">
-                UiTM JASIN LIBRARY
-            </h2>
-
-            <p class="objective">Objectives</p>
-            <ul class="objective-list">
-                <li class="obj">To empower the delivery of UiTM's library services as a center of information excellence that always remained relevant, referred, and respected.</li>
-                <li class="obj">To serve a comprehensive, up-to-date, and relevant knowledge resources in various physically and virtually formatted.</li>
-                <li class="obj">To provide a conducive environment and facilities for teaching, learning, and research matters.</li>
-                <li class="obj">To develop the latest information technology and communication facilities based on customer needs.</li>
-                <li class="obj">To strengthen human capital through Budaya PERDANA for PUiTM communities.</li>
-                <li class="obj">To enrich relations and cooperation with external organizations in an industrial network.</li>
-            </ul>
-        </div>
-    </div>
 
     <script>
         function logout() {
