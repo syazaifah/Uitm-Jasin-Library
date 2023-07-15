@@ -142,20 +142,21 @@
             </h2>
             <fieldset id="create">
                 <form th:action="@{/createAccLib}" method="post">
-                    <label class="name">Name :</label><br>
-                    <input type="text" name="name" required><br><br>
-                            
-                    <label class="lib_id">User ID :</label><br>
-                    <input type="text" name="lib_id" required><br><br>
-                            
-                    <label class="phone_number">Phone Number: </label><br>
-                    <input type="tel" name="phone_number" pattern="[0-9]{10}" required><br><br>
-                            
-                    <label class="email">Email : </label><br>   
-                    <input type="email" name="email" required><br><br>
+                    <label class="libid">Librarian ID :</label><br>
+                    <input type="text" name="libid" required><br><br>
 
-                    <label class="password">Password : </label><br>   
-                    <input type="password" name="password" required><br><br>
+                    <label class="libname">Name :</label><br>
+                    <input type="text" name="libname" required><br><br>   
+                            
+                    <label class="libphonenumber">Phone Number:</label><br>
+                    <input type="tel" name="libphonenumber" pattern="[0-9]{10}" required><br><br>
+                
+                    <label class="libemail">Email:</label><br>   
+                    <input type="email" name="libemail" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required><br><br>
+                
+                    <label class="libpassword">Password:</label><br>   
+                    <input type="password" name="libpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required><br>
+                    <small>Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one digit.</small><br><br>
         
                     <div class="btn-container">
                         <button type="submit" class="btn">Create Account</button>

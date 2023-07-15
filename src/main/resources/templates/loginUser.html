@@ -140,14 +140,14 @@ footer {
             </h2>
             <fieldset id="create">  
                 <form th:action="@{/loginUser}" method="post">         
-                <label class="email">Email : </label><br>   
-                <input type="email" name="email" required><br><br>
-
-                <label class="password">Password : </label><br>   
-                <input type="password" name="password" required><br><br>
-
-                <button type="submit" class="btn">Submit</button>
-                </form><br><br>
+                    <label class="studemail">Email:</label><br>   
+                    <input type="email" name="studemail" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required><br><br>
+                
+                    <label class="studpassword">Password:</label><br>   
+                    <input type="password" name="studpassword" required><br><br>
+                
+                    <button type="submit" class="btn">Submit</button>
+                </form>                
             </fieldset>
         </fieldset>
     </div>

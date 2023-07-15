@@ -29,11 +29,11 @@ public class LibrarianController {
     @PostMapping("/createAccLib")
     public String addAccount(HttpSession session, @ModelAttribute("createAccLib") Librarian librarian) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "INSERT INTO libdata (name, lib_id, phone_number, email, password) VALUES (?,?,?,?,?)"; 
+            String sql = "INSERT INTO librarian (libid, libname, libphonenumber, libemail, libpassword) VALUES (?,?,?,?,?)"; 
             PreparedStatement statement = connection.prepareStatement(sql);
 
-            statement.setString(1, librarian.getName());
-            statement.setString(2, librarian.getId());
+            statement.setString(1, librarian.getId());
+            statement.setString(2, librarian.getName());
             statement.setString(3, librarian.getPhone());
             statement.setString(4, librarian.getEmail());
             statement.setString(5, librarian.getPassword());
@@ -60,18 +60,18 @@ public class LibrarianController {
     @PostMapping("/loginLib")
     public String libHome(HttpSession session, @ModelAttribute("loginLib") Librarian librarian, Model model) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT email, password FROM libdata";
+            String sql = "SELECT libemail, libpassword FROM librarian";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
             String returnPage = "";
 
             while (resultSet.next()) {
-                String email = resultSet.getString("email");
-                String password = resultSet.getString("password");
+                String libemail = resultSet.getString("libemail");
+                String libpassword = resultSet.getString("libpassword");
 
-                if (email.equals(librarian.getEmail()) && password.equals(librarian.getPassword())) {
-                    session.setAttribute("email", librarian.getEmail());
+                if (libemail.equals(librarian.getEmail()) && libpassword.equals(librarian.getPassword())) {
+                    session.setAttribute("libemail", librarian.getEmail());
                     returnPage = "redirect:/libHome";
                     break;
                 } else {
@@ -95,24 +95,24 @@ public class LibrarianController {
 
     @GetMapping("/profileLib")
     public String viewProfileLib(HttpSession session, Model model) {
-    String email = (String) session.getAttribute("email");
+    String libemail = (String) session.getAttribute("libemail");
 
-    if (email != null) { 
+    if (libemail != null) { 
         try {
             Connection connection = dataSource.getConnection();
-            String sql = "SELECT name, lib_id, phone_number, password FROM libdata WHERE email=?";
+            String sql = "SELECT libid, libname, libphonenumber, libpassword FROM librarian WHERE libemail=?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, email);
+            statement.setString(1, libemail);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                String name = resultSet.getString("name");
-                String lib_id = resultSet.getString("lib_id");
-                String phone_number = resultSet.getString("phone_number");
-                String password = resultSet.getString("password");
+                String libid = resultSet.getString("libid");
+                String libname = resultSet.getString("libname");
+                String libphonenumber = resultSet.getString("libphonenumber");
+                String libpassword = resultSet.getString("libpassword");
                 
                 // Set attributes
-                Librarian profileLib = new Librarian(name, lib_id, phone_number, email, password);
+                Librarian profileLib = new Librarian(libid, libname, libphonenumber, libemail, libpassword);
                 model.addAttribute("profileLib", profileLib);
                 return "profileLib";
             } else {
@@ -129,23 +129,23 @@ public class LibrarianController {
 
 @PostMapping("/profileLib")
 public String profileLib(HttpSession session, Model model) {
-    String email = (String) session.getAttribute("email");
+    String libemail = (String) session.getAttribute("libemail");
 
-    if (email != null) {
+    if (libemail != null) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT name, lib_id, phone_number, email, password FROM libdata WHERE email=?";
+            String sql = "SELECT libid, libname, libphonenumber, libemail, libpassword FROM librarian WHERE libemail=?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, email);
+            statement.setString(1, libemail);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                String name = resultSet.getString("name");
-                String lib_id = resultSet.getString("lib_id");
-                String phone_number = resultSet.getString("phone_number");
-                String password = resultSet.getString("password");
+                String libid = resultSet.getString("libid");
+                String libname = resultSet.getString("libname");
+                String libphonenumber = resultSet.getString("libphonenumber");
+                String libpassword = resultSet.getString("libpassword");
 
-                System.out.println("name from db: " + name);
-                Librarian profileLib = new Librarian(name, lib_id, phone_number, email, password);
+                System.out.println("name from db: " + libname);
+                Librarian profileLib = new Librarian(libid, libname, libphonenumber, libemail, libpassword);
                 model.addAttribute("profileLib", profileLib);
                 System.out.println("Session profileLib: " + model.getAttribute("profileLib"));
                 return "profileLib";
@@ -164,13 +164,13 @@ public String profileLib(HttpSession session, Model model) {
     @PostMapping("/updateLib")
     public String updateLib(HttpSession session, @ModelAttribute("updateAcc") Librarian librarian, Model model) {
     try (Connection connection = dataSource.getConnection()) {
-        String sql = "UPDATE libdata SET name=?, phone_number=?, password=? WHERE email=?";
+        String sql = "UPDATE librarian SET libname=?, libphonenumber=?, libpassword=? WHERE libemail=?";
         PreparedStatement statement = connection.prepareStatement(sql);
 
         statement.setString(1, librarian.getName());
         statement.setString(2, librarian.getPhone());
         statement.setString(3, librarian.getPassword());
-        statement.setString(4, (String) session.getAttribute("email"));
+        statement.setString(4, (String) session.getAttribute("libemail"));
 
         int rowsUpdated = statement.executeUpdate();
 
@@ -192,13 +192,13 @@ public String profileLib(HttpSession session, Model model) {
 
     @PostMapping("/deleteLib")
     public String deleteLib(HttpSession session, Model model) {
-        String email = (String) session.getAttribute("email");
+        String libemail = (String) session.getAttribute("libemail");
 
-        if (email != null) {
+        if (libemail != null) {
             try (Connection connection = dataSource.getConnection()) {
-                String sql = "DELETE FROM libdata WHERE email=?";
+                String sql = "DELETE FROM librarian WHERE libemail=?";
                 PreparedStatement statement = connection.prepareStatement(sql);
-                statement.setString(1, email);
+                statement.setString(1, libemail);
 
                 int rowsAffected = statement.executeUpdate();
 

@@ -137,28 +137,26 @@ button:focus {
                 VIEW ACCOUNT
             </h2>
             <fieldset id="create">
-                <form th:action="@{/updateUser}" method="post"  th:object="${profileUser}">
-                    <label class="name">Name :</label><br>
-                    <input type="text" name="name" th:value="${profileUser?.name}" ><br><br>
+                <form th:action="@{/updateUser}" method="post" th:object="${profileUser}">
+                    <label class="studname">Name:</label><br>
+                    <input type="text" name="studname" th:value="${profileUser?.name}" ><br><br>
                     
-                    <!--<label class="studentId">User ID :</label><br>
-                    <input type="text" name="user_id" th:value="${profileUser?.id}"><br><br> -->
+                    <label class="studphonenumber">Phone Number : </label><br>
+                    <input type="tel" name="studphonenumber" th:value="${profileUser?.phone}" ><br><br>
                     
-                    <label class="phone">Phone Number : </label><br>
-                    <input type="text" name="phone" th:value="${profileUser?.phone}" ><br><br>
-                    
-                    <label class="email">Email : </label><br>
-                    <input type="email" name="email" th:value="${profileUser?.email}" ><br><br>
+                    <label class="studemail">Email : </label><br>
+                    <input type="email" name="studemail" th:value="${profileUser?.email}" ><br><br>
 
-                    <label class="password">Password : </label><br>   
-                    <input type="password" name="password" th:value="${profileUser?.password}" ><br><br>
+                    <label class="studpassword">Password : </label><br>   
+                    <input type="password" name="studpassword" th:value="${profileUser?.password}" ><br><br>
 
                     <div class="form-buttons">
-                        <a class="back" th:href="@{/index}">BACK</a>
+                        <a class="back" th:href="@{/}">BACK</a>
                 
                         <input type="submit" value="UPDATE">
                         <input type="delete" value="DELETE">
                     </div>
+
                 </form>
             </fieldset>
         </fieldset>

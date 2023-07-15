@@ -1,64 +1,56 @@
 package com.heroku.Modal;
 
 public class User {
-    private String name;
-    private String user_id;
-    private String phone_number;
-    private String email;
-    private String password;
+    private String studid;
+    private String studname;
+    private String studphonenumber;
+    private String studemail;
+    private String studpassword;
 
-    public User(String name, String user_id, String phone_number, String email, String password) {
-        this.name = name;
-        this.user_id = user_id;
-        this.phone_number= phone_number;
-        this.email = email;
-        this.password = password;
-    }
-
-    // public User(String name, String user_id, String phone_number,  String password) {
-    //     this.name = name;
-    //     this.user_id = user_id;
-    //     this.phone_number= phone_number;
-    //     this.password = password;
-    // }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public User(String studid, String studname, String studphonenumber, String studemail, String studpassword) {
+        this.studid = studid;
+        this.studname = studname;
+        this.studphonenumber= studphonenumber;
+        this.studemail = studemail;
+        this.studpassword = studpassword;
     }
 
     public String getId() {
-        return user_id;
+        return studid;
     }
 
-    public void setId(String user_id) {
-        this.user_id = user_id;
+    public void setId(String studid) {
+        this.studid = studid;
     }
 
+    public String getName() {
+        return studname;
+    }
+
+    public void setName(String studname) {
+        this.studname = studname;
+    }
     public String getPhone() {
-        return phone_number;
+        return studphonenumber;
     }
 
-    public void setPhone(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhone(String studphonenumber) {
+        this.studphonenumber = studphonenumber;
     }
 
     public String getEmail() {
-        return email;
+        return studemail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String studemail) {
+        this.studemail = studemail;
     }
 
     public String getPassword() {
-        return password;
+        return studpassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String studpassword) {
+        this.studpassword = studpassword;
     }
 }

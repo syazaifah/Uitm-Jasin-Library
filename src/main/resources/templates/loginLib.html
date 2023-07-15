@@ -131,12 +131,12 @@
             </h2>
             <fieldset id="create">
                 <form th:action="@{/loginLib}" method="post">           
-                <label class="email">Email : </label><br>   
-                <input type="email" name="email" required><br><br>
-
-                <label class="password">Password : </label><br>   
-                <input type="password" name="password" required><br><br>
+                    <label class="libemail">Email:</label><br>   
+                    <input type="email" name="libemail" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required><br><br>
                 
+                    <label class="libpassword">Password:</label><br>   
+                    <input type="password" name="libpassword" required><br><br>
+
                 <button class="btn" type="submit">Create</button>
                 </form>
             </fieldset>

@@ -138,23 +138,20 @@ button:focus {
             </h2>
             <fieldset id="create">
                 <form th:action="@{/updateLib}" method="post"  th:object="${profileLib}">
-                    <label class="name">Name :</label><br>
-                    <input type="text" name="name" th:value="${profileLib?.name}" ><br><br>
+                    <label class="libname">Name:</label><br>
+                    <input type="text" name="libname" th:value="${profileLib?.name}" ><br><br>
                     
-                    <!--<label class="librarianId">User ID :</label><br>
-                    <input type="text" name="lib_id" th:value="${profileLib?.id}"><br><br> -->
+                    <label class="libphonenumber">Phone Number : </label><br>
+                    <input type="tel" name="libphonenumber" th:value="${profileLib?.phone}" ><br><br>
                     
-                    <label class="phone_number">Phone Number : </label><br>
-                    <input type="text" name="phone_number" th:value="${profileLib?.phone}" ><br><br>
-                    
-                    <label class="email">Email : </label><br>
-                    <input type="email" name="email" th:value="${profileLib?.email}" ><br><br>
+                    <label class="libemail">Email : </label><br>
+                    <input type="email" name="libemail" th:value="${profileLib?.email}" ><br><br>
 
-                    <label class="password">Password : </label><br>   
-                    <input type="password" name="password" th:value="${profileLib?.password}" ><br><br>
+                    <label class="libpassword">Password : </label><br>   
+                    <input type="password" name="libpassword" th:value="${profileLib?.password}" ><br><br>
 
                     <div class="form-buttons">
-                        <a class="back" th:href="@{/index}">BACK</a>
+                        <a class="back" th:href="@{/}">BACK</a>
                 
                         <input type="submit" value="UPDATE">
                         <input type="delete" value="DELETE">

@@ -29,11 +29,11 @@ public class UserController {
     @PostMapping("/createAccUser")
     public String addAccount(HttpSession session, @ModelAttribute("createAccCust") User user) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "INSERT INTO userdata (name, user_id, phone_number, email, password) VALUES (?,?,?,?,?)"; 
+            String sql = "INSERT INTO student (studid, studname, studphonenumber, studemail, studpassword) VALUES (?,?,?,?,?)"; 
             PreparedStatement statement = connection.prepareStatement(sql);
 
-            statement.setString(1, user.getName());
-            statement.setString(2, user.getId());
+             statement.setString(1, user.getId());
+            statement.setString(2, user.getName());
             statement.setString(3, user.getPhone());
             statement.setString(4, user.getEmail());
             statement.setString(5, user.getPassword());
@@ -60,18 +60,18 @@ public class UserController {
     @PostMapping("/loginUser")
     public String userHome(HttpSession session, @ModelAttribute("userLogin") User user, Model model) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT email, password FROM userdata";
+            String sql = "SELECT studemail, studpassword FROM student";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
             String returnPage = "";
 
             while (resultSet.next()) {
-                String email = resultSet.getString("email");
-                String password = resultSet.getString("password");
+                String studemail = resultSet.getString("studemail");
+                String studpassword = resultSet.getString("studpassword");
 
-                if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
-                    session.setAttribute("email", user.getEmail());
+                if (studemail.equals(user.getEmail()) && studpassword.equals(user.getPassword())) {
+                    session.setAttribute("studemail", user.getEmail());
                     returnPage = "redirect:/userHome";
                     break;
                 } else {
@@ -83,7 +83,7 @@ public class UserController {
             return returnPage;
         } catch (Throwable t) {
             t.printStackTrace();
-            return "/userLogin";
+            return "/loginUser";
         }
     }
 
@@ -95,24 +95,24 @@ public class UserController {
 
     @GetMapping("/profileUser")
     public String viewprofileUser(HttpSession session, Model model) {
-    String email = (String) session.getAttribute("email");
+    String studemail = (String) session.getAttribute("studemail");
 
-    if (email != null) { 
+    if (studemail != null) { 
         try {
             Connection connection = dataSource.getConnection();
-            String sql = "SELECT name, user_id, phone_number, password FROM userdata WHERE email=?";
+            String sql = "SELECT studid, studname,  studphonenumber, studemail, studpassword FROM student WHERE studemail=?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, email);
+            statement.setString(1, studemail);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                String name = resultSet.getString("name");
-                String user_id= resultSet.getString("user_id");
-                String phone_number = resultSet.getString("phone_number");
-                String password = resultSet.getString("password");
+                String studid= resultSet.getString("studid");
+                String studname = resultSet.getString("studname");
+                String studphonenumber = resultSet.getString("studphonenumber");
+                String studpassword = resultSet.getString("studpassword");
                 
                 // Set attributes
-                User profileUser = new User(name, user_id, phone_number,email, password);
+                User profileUser = new User(studid, studname, studphonenumber,studemail, studpassword);
                 model.addAttribute("profileUser", profileUser);
                 return "profileUser";
             } else {
@@ -128,23 +128,23 @@ public class UserController {
 
     @PostMapping("/profileUser")
     public String profileUser(HttpSession session, Model model) {
-        String email = (String) session.getAttribute("email");
+        String studemail = (String) session.getAttribute("studemail");
 
-        if (email != null) {
+        if (studemail != null) {
             try (Connection connection = dataSource.getConnection()) {
-                String sql = "SELECT name, user_id, phone_number, email, password FROM userdata WHERE email=?";
+                String sql = "SELECT studid, studname,  studphonenumber, studemail, studpassword FROM student WHERE studemail=?";
                 PreparedStatement statement = connection.prepareStatement(sql);
-                statement.setString(1, email);
+                statement.setString(1, studemail);
                 ResultSet resultSet = statement.executeQuery();
 
                 if (resultSet.next()) {
-                   String name = resultSet.getString("name");
-                String user_id= resultSet.getString("user_id");
-                String phone_number = resultSet.getString("phone_number");
-                String password = resultSet.getString("password");
-
-                    System.out.println("name from db: " + name);
-                    User profileUser = new User(name, user_id, phone_number, email, password);
+                    String studid= resultSet.getString("studid");
+                    String studname = resultSet.getString("studname");
+                    String studphonenumber = resultSet.getString("studphonenumber");
+                    String studpassword = resultSet.getString("studpassword");
+                
+                    System.out.println("studname from db: " + studname);
+                    User profileUser = new User(studid, studname, studphonenumber, studemail, studpassword);
                     model.addAttribute("profileUser", profileUser);
                     System.out.println("Session profileUser: " + model.getAttribute("profileUser"));
                     return "profileUser";
@@ -161,15 +161,15 @@ public class UserController {
 
     
     @PostMapping("/updateUser")
-    public String updateUser(HttpSession session, @ModelAttribute("updateAcc") User user, Model model) {
+    public String updateUser(HttpSession session, @ModelAttribute("updateUser") User user, Model model) {
     try (Connection connection = dataSource.getConnection()) {
-        String sql = "UPDATE userdata SET name=?, phone_number=?, password=? WHERE email=?";
+        String sql = "UPDATE student SET studname=?, studphonenumber=?, studpassword=? WHERE studemail=?";
         PreparedStatement statement = connection.prepareStatement(sql);
 
         statement.setString(1, user.getName());
         statement.setString(2, user.getPhone());
         statement.setString(3, user.getPassword());
-        statement.setString(4, (String) session.getAttribute("email"));
+        statement.setString(4, (String) session.getAttribute("studemail"));
 
         int rowsUpdated = statement.executeUpdate();
 

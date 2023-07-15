@@ -1,57 +1,58 @@
 package com.heroku.Modal;
 
 public class Librarian {
-    private String name;
-    private String lib_id;
-    private String phone_number;
-    private String email;
-    private String password;
+    private String libid;
+    private String libname;
+    private String libphonenumber;
+    private String libemail;
+    private String libpassword;
 
-    public Librarian(String name, String lib_id, String phone_number, String email, String password) {
-        this.name = name;
-        this.lib_id = lib_id;
-        this.phone_number= phone_number;
-        this.email = email;
-        this.password = password;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public Librarian(String libid, String libname, String libphonenumber, String libemail, String libpassword) {
+        this.libid = libid;
+        this.libname = libname;
+        this.libphonenumber= libphonenumber;
+        this.libemail = libemail;
+        this.libpassword = libpassword;
     }
 
     public String getId() {
-        return lib_id;
+        return libid;
     }
 
-    public void setId(String lib_id) {
-        this.lib_id = lib_id;
+    public void setId(String libid) {
+        this.libid = libid;
+    }
+
+    public String getName() {
+        return libname;
+    }
+
+    public void setName(String libname) {
+        this.libname = libname;
     }
 
     public String getPhone() {
-        return phone_number;
+        return libphonenumber;
     }
 
-    public void setPhone(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhone(String libphonenumber) {
+        this.libphonenumber = libphonenumber;
     }
 
     public String getEmail() {
-        return email;
+        return libemail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String libemail) {
+        this.libemail = libemail;
     }
 
     public String getPassword() {
-        return password;
+        return libpassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String libpassword) {
+        this.libpassword = libpassword;
     }
 }
