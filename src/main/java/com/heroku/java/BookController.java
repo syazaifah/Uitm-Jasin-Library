@@ -29,7 +29,7 @@ public class BookController {
     }
 
    @PostMapping("/addBookLib")
-  public String addBook(HttpSession session, @ModelAttribute("addBookLib") Book book, BindingResult result) {
+    public String addBook(HttpSession session, @ModelAttribute("addBookLib") Book book, BindingResult result) {
     // if (result.hasErrors()) {
     //     return "addBookLib"; // Return the form again if there are validation errors
     // }
@@ -71,7 +71,7 @@ public class BookController {
     }
 
 
-@GetMapping("/bookListLib")
+    @GetMapping("/bookListLib")
     public String viewBookList(HttpSession session, Model model) {
         ArrayList<Book> books = new ArrayList<>();
         try (Connection con = dataSource.getConnection()) {
@@ -106,7 +106,7 @@ public class BookController {
     }
 
 
-     @GetMapping("/updateBookList")
+    @GetMapping("/updateBookList")
     public String showUpdateForm(@RequestParam("bookId") String bookId, Model model) {
     try (Connection connection = dataSource.getConnection()) {
       String sql = "SELECT * FROM book WHERE bookid = ?";
@@ -136,7 +136,7 @@ public class BookController {
 
 
     @PostMapping("/updateBookList")
-     public String updateBook(@ModelAttribute("book") Book book) {
+    public String updateBook(@ModelAttribute("book") Book book) {
     try (Connection connection = dataSource.getConnection()) {
       String sql = "UPDATE book SET booktitle = ?, author = ?, status = ?, bookquantity = ? WHERE bookid = ?";
       PreparedStatement statement = connection.prepareStatement(sql);
@@ -160,7 +160,7 @@ public class BookController {
   }
 
   @PostMapping("/deleteBookList")
-  public String deleteBookList(@RequestParam("bookId") String bookId) {
+   public String deleteBookList(@RequestParam("bookId") String bookId) {
       try (Connection connection = dataSource.getConnection()) {
           String sql = "DELETE FROM book WHERE bookid = ?";
           PreparedStatement statement = connection.prepareStatement(sql);
@@ -178,37 +178,129 @@ public class BookController {
   }
 
 
-@GetMapping("/bookListUser")
-    public String viewBookListUser(HttpSession session, Model model) {
-        ArrayList<Book> books = new ArrayList<>();
-        try (Connection con = dataSource.getConnection()) {
-            final var statement = con.prepareStatement("SELECT * FROM book");
-            final var rs = statement.executeQuery();
-            while (rs.next()) {
-                String bookid = rs.getString("bookid");
-                String booktitle = rs.getString("booktitle");
-                String author = rs.getString("author");
-                String status = rs.getString("status");
-                Integer bookquantity = rs.getInt("bookquantity");
+    @GetMapping("/fiction")
+public String displayFiction(Model model) {
+    ArrayList<Book> books = new ArrayList<>();
+    try (Connection con = dataSource.getConnection()) {
+        String sql = "SELECT *\r\n" + //
+            "FROM book\r\n" + //
+            "WHERE bookid LIKE '%fc%'";
+        PreparedStatement statement = con.prepareStatement(sql);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()) {
+            String bookid = rs.getString("bookid");
+            String booktitle = rs.getString("booktitle");
+            String author = rs.getString("author");
+            String status = rs.getString("status");
+           Integer bookquantity = rs.getInt("bookquantity");
 
-                Book book = new Book(bookid, booktitle, author, status, bookquantity);
-                books.add(book);
-            }
-            model.addAttribute("books", books);
-            return "bookListUser";
-        } catch (SQLException sqe) {
-            System.out.println("Error Code = " + sqe.getErrorCode());
-            System.out.println("SQL state = " + sqe.getSQLState());
-            System.out.println("Message = " + sqe.getMessage());
-            System.out.println("printTrace /n");
-            sqe.printStackTrace();
-
-            return "redirect:/";
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("E message : " + e.getMessage());
-
-            return "redirect:/";
+           Book book = new Book(bookid, booktitle, author, status, bookquantity);
+            books.add(book);
         }
+        model.addAttribute("books", books);
+        return "fiction";
+    } catch (SQLException sqe) {
+        sqe.printStackTrace();
+        return "error";
+    } catch (Exception e) {
+        e.printStackTrace();
+        return "error";
     }
-  }
+}
+
+@GetMapping("/science")
+public String displayScience(Model model) {
+    ArrayList<Book> books = new ArrayList<>();
+    try (Connection con = dataSource.getConnection()) {
+        String sql = "SELECT *\r\n" + //
+            "FROM book\r\n" + //
+            "WHERE bookid LIKE '%sc%'";
+        PreparedStatement statement = con.prepareStatement(sql);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()) {
+            String bookid = rs.getString("bookid");
+            String booktitle = rs.getString("booktitle");
+            String author = rs.getString("author");
+            String status = rs.getString("status");
+           Integer bookquantity = rs.getInt("bookquantity");
+
+           Book book = new Book(bookid, booktitle, author, status, bookquantity);
+            books.add(book);
+        }
+        model.addAttribute("books", books);
+        return "science";
+    } catch (SQLException sqe) {
+        sqe.printStackTrace();
+        return "error";
+    } catch (Exception e) {
+        e.printStackTrace();
+        return "error";
+    }
+}
+
+@GetMapping("/historical")
+public String displayHistorical(Model model) {
+    ArrayList<Book> books = new ArrayList<>();
+    try (Connection con = dataSource.getConnection()) {
+        String sql = "SELECT *\r\n" + //
+            "FROM book\r\n" + //
+            "WHERE bookid LIKE '%ht%'";
+        PreparedStatement statement = con.prepareStatement(sql);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()) {
+            String bookid = rs.getString("bookid");
+            String booktitle = rs.getString("booktitle");
+            String author = rs.getString("author");
+            String status = rs.getString("status");
+           Integer bookquantity = rs.getInt("bookquantity");
+
+           Book book = new Book(bookid, booktitle, author, status, bookquantity);
+            books.add(book);
+        }
+        model.addAttribute("books", books);
+        return "historical";
+    } catch (SQLException sqe) {
+        sqe.printStackTrace();
+        return "error";
+    } catch (Exception e) {
+        e.printStackTrace();
+        return "error";
+    }
+}
+
+@GetMapping("/non")
+public String displayNon(Model model) {
+    ArrayList<Book> books = new ArrayList<>();
+    try (Connection con = dataSource.getConnection()) {
+        String sql = "SELECT *\r\n" + //
+            "FROM book\r\n" + //
+            "WHERE bookid LIKE '%non%'";
+        PreparedStatement statement = con.prepareStatement(sql);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()) {
+            String bookid = rs.getString("bookid");
+            String booktitle = rs.getString("booktitle");
+            String author = rs.getString("author");
+            String status = rs.getString("status");
+           Integer bookquantity = rs.getInt("bookquantity");
+
+           Book book = new Book(bookid, booktitle, author, status, bookquantity);
+            books.add(book);
+        }
+        model.addAttribute("books", books);
+        return "non";
+    } catch (SQLException sqe) {
+        sqe.printStackTrace();
+        return "error";
+    } catch (Exception e) {
+        e.printStackTrace();
+        return "error";
+    }
+}
+@GetMapping("/bookListUser")
+    public String bookListUser() {
+        return "bookListUser";
+    }
+
+
+}

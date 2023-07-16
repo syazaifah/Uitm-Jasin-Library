@@ -1,212 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UiTM Jasin Library System</title>
     <link rel="icon" type="image/x-icon" href="img/book.png">
+  <style>
+    /* Add your additional styles here */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+      background-image: url("img/back.jpg");
+    }
+    .header {
+      background-color: #55e3fc;
+      position: relative;
+      display: flex;
+      margin-left: -8px;
+      margin-right: -8px;
+      margin-top: -8px;
+      height: 100px;
+      font-size: 1.4rem;
+      align-items: center;
+    }
+    .logo {
+      width: 12%;
+    }
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+    .nav a {
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      padding: 10px;
+      display: inline;
+    }
+    #home {
+      margin-left: 1150px;
+    }
+    .add {
+      padding: 9px 35px;
+      background: #406b40;
+      border-color: black;
+      outline: none;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 500;
+      border-radius: 5px;
+      margin-left: 600px;
+      margin-top: 50px;
+      color: white;
+    }
+    .add:hover {
+      background-color: #8fbc8f;
+    }
+    .add:focus {
+      background-color: #85ad85;
+      outline: none;
+    }
+    table,
+    th,
+    td {
+      border: 2px solid black;
+      border-collapse: collapse;
+    }
+    table {
+      width: 90%;
+      margin-top: 50px;
+      margin-left: 70px;
+    }
+    .left {
+      padding: 10px;
+      background-color: aliceblue;
+    }
+    .title {
+      font-size: 18px;
+      padding: 9px;
+      font-weight: 600;
+      background-color: gray;
+    }
+    .update,
+    .delete {
+      padding: 5px 20px;
+      background: #406b40;
+      border-color: black;
+      outline: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 5px;
+      color: white;
+    }
+    .update:hover,
+    .delete:hover {
+      background-color: #8fbc8f;
+    }
+    .update:focus,
+    .delete:focus {
+      background-color: #85ad85;
+      outline: none;
+    }
+    .feature-section {
+        background-color: #fff;
+        padding: 50px;
+        text-align: center;
+      }
+      .feature-items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+      }
+      .feature-items h2 {
+        font-family: 'Arial Black', sans-serif;
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #ffc0cb;
+      }
+      .feature-item {
+        flex-basis: 33.33%;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #ffc0cb;
+        background-color: #ffffff;
+        transition: transform 0.3s ease-in-out;
+      }
+      .feature-item:hover {
+        transform: scale(1.05);
+      }
+      .feature-item img {
+        height: 200px;
+        width: 200px;
+        margin-bottom: 10px;
+        border-radius: 50%;
+        border: 4px solid #000000;
+      }
+      .feature-item p {
+        margin: 0;
+      }
+  </style>
 </head>
-
-<style>
-body{
-    background-image: url("img/bookshelf.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-}
-
-.logo{
-    width: 12%;
-}
-
-.nav{
-    background-color:#1c441c;
-    position: relative;
-    display: flex;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-top: -8px;
-    height: 80px;
-    font-size: 1.4rem;
-    align-items: center;
-}
-
-.link{
-    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: 800;
-    font-size: 20px;
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    display:inline;
-    margin-left: 20px;
-} 
-
-#home{
-    margin-left: 1150px;
-}
-
-table, th, td {
-    border: 2px solid black;
-    border-collapse: collapse; 
-}
-
-table{
-    width: 90%;
-    margin-top: 50px;
-    margin-left: 70px;
-}
-
-.left{
-    padding: 10px;   
-    background-color:aliceblue;
-}
-
-.title{
-    font-size: 18px;
-    padding: 9px;  
-    font-weight: 600;
-    background-color: gray;
-}
-
-.add{
-    padding: 5px 20px;
-    background:#406b40;
-    border-color: black;
-    outline: none;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 500;
-    border-radius: 5px;
-    color: white;
-}
-
-.add:hover{
-    background-color: #8FBC8F;
-}
-
-.add:focus{
-    background-color: #85ad85;
-    outline: none;
-}
-</style>
-
 <body>
-    <header>
-        <nav class="nav">
-            <img class="logo" src="img/uitm-logo.png">
-            <a class="link" id="home" href="index.html">Home</a>
-        </nav>
-    </header>
+  <header>
+    <nav class="header">
+      <img class="logo" src="img/uitm-logo.png">
+      <a class="link" id="home" href="index.html">Home</a>
+    </nav>
+  </header>
 
-    <h2>Fiction Books</h2>
-    <table>
-        <tr>
-            <th class="title">BOOK ID</th>
-            <th class="title">BOOK TITLE</th>
-            <th class="title">AUTHOR</th>
-            <th class="title">STATUS</th>
-            <th class="title">BOOK QUANTITY</th>
-            <th class="title">ADD TO CART</th>
-        </tr>
-        <tr th:each="book : ${fictionBooks}">
-            <td class="left" th:text="${book.bookid}"></td>
-            <td class="left" th:text="${book.booktitle}"></td>
-            <td class="left" th:text="${book.author}"></td>
-            <td class="left" th:text="${book.status}"></td>
-            <td class="left" th:text="${book.bookquantity}"></td>
-            <td class="left">
-                <a class="add-link" th:href="@{/bookListUser(bookId=${book.bookid})}">ADD TO CART</a>
-            </td>
-        </tr>
-    </table>
+  <div class="feature-section">
+    <h2 style="color: #ffc0cb;">LIST OF BOOKS BY GENRE</h2>
+    <div class="feature-items">
+      <div class="feature-item">
+        <a th:href="@{/fiction}">
+          <img src="img/fictioncover.jpg" alt="Fiction Icon">
+          <p>Fiction</p>
+        </a>
+      </div>
+      <div class="feature-item">
+        <a th:href="@{/science}">
+          <img src="img/sciencecover.jpg" alt="Science Fiction Icon">
+          <p>Science Fiction</p>
+        </a>
+      </div>
+      <div class="feature-item">
+        <a  th:href="@{/historical}">
+          <img src="img/historicalcover.png" alt="Historical Icon">
+          <p>Historical Fiction</p>
+        </a>
+      </div>
+      <div class="feature-item">
+        <a th:href="@{/non}">
+          <img src="img/noncover.png" alt="Non-Fiction Icon">
+          <p>Non-Fiction</p>
+        </a>
+      </div>
+    </div>
+  </div>
 
-    <h2>Thriller Books</h2>
-    <table>
-        <tr>
-            <th class="title">BOOK ID</th>
-            <th class="title">BOOK TITLE</th>
-            <th class="title">AUTHOR</th>
-            <th class="title">STATUS</th>
-            <th class="title">BOOK QUANTITY</th>
-            <th class="title">ADD TO CART</th>
-        </tr>
-        <tr th:each="book : ${thrillerBooks}">
-            <td class="left" th:text="${book.bookid}"></td>
-            <td class="left" th:text="${book.booktitle}"></td>
-            <td class="left" th:text="${book.author}"></td>
-            <td class="left" th:text="${book.status}"></td>
-            <td class="left" th:text="${book.bookquantity}"></td>
-            <td class="left">
-                <a class="add-link" th:href="@{/bookListUser(bookId=${book.bookid})}">ADD TO CART</a>
-            </td>
-        </tr>
-    </table>
-
-    <h2>Historical Fiction Books</h2>
-    <table>
-        <tr>
-            <th class="title">BOOK ID</th>
-            <th class="title">BOOK TITLE</th>
-            <th class="title">AUTHOR</th>
-            <th class="title">STATUS</th>
-            <th class="title">BOOK QUANTITY</th>
-            <th class="title">ADD TO CART</th>
-        </tr>
-        <tr th:each="book : ${historicalFictionBooks}">
-            <td class="left" th:text="${book.bookid}"></td>
-            <td class="left" th:text="${book.booktitle}"></td>
-            <td class="left" th:text="${book.author}"></td>
-            <td class="left" th:text="${book.status}"></td>
-            <td class="left" th:text="${book.bookquantity}"></td>
-            <td class="left">
-                <a class="add-link" th:href="@{/bookListUser(bookId=${book.bookid})}">ADD TO CART</a>
-            </td>
-        </tr>
-    </table>
-
-    <h2>Mystery Books</h2>
-    <table>
-        <tr>
-            <th class="title">BOOK ID</th>
-            <th class="title">BOOK TITLE</th>
-            <th class="title">AUTHOR</th>
-            <th class="title">STATUS</th>
-            <th class="title">BOOK QUANTITY</th>
-            <th class="title">ADD TO CART</th>
-        </tr>
-        <tr th:each="book : ${mysteryBooks}">
-            <td class="left" th:text="${book.bookid}"></td>
-            <td class="left" th:text="${book.booktitle}"></td>
-            <td class="left" th:text="${book.author}"></td>
-            <td class="left" th:text="${book.status}"></td>
-            <td class="left" th:text="${book.bookquantity}"></td>
-            <td class="left">
-                <a class="add-link" th:href="@{/bookListUser(bookId=${book.bookid})}">ADD TO CART</a>
-            </td>
-        </tr>
-    </table>
-
-    <h2>Science Fiction Books</h2>
-    <table>
-        <tr>
-            <th class="title">BOOK ID</th>
-            <th class="title">BOOK TITLE</th>
-            <th class="title">AUTHOR</th>
-            <th class="title">STATUS</th>
-            <th class="title">BOOK QUANTITY</th>
-            <th class="title">ADD TO CART</th>
-        </tr>
-        <tr th:each="book : ${scienceFictionBooks}">
-            <td class="left" th:text="${book.bookid}"></td>
-            <td class="left" th:text="${book.booktitle}"></td>
-            <td class="left" th:text="${book.author}"></td>
-            <td class="left" th:text="${book.status}"></td>
-            <td class="left" th:text="${book.bookquantity}"></td>
-            <td class="left">
-                <a class="add-link" th:href="@{/bookListUser(bookId=${book.bookid})}">ADD TO CART</a>
-            </td>
-        </tr>
-    </table>
 </body>
 </html>

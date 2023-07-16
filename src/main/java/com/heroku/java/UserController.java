@@ -190,7 +190,7 @@ public class UserController {
 
 
     @PostMapping("/deleteUser")
-    public String deleteStudent(HttpSession session, Model model) {
+    public String deleteUser(HttpSession session, Model model) {
         String studemail = (String) session.getAttribute("studemail");
 
         if (studemail != null) {
