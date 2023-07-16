@@ -134,7 +134,7 @@ button:focus {
     <div class="container">
         <fieldset id="adCreate">
             <h2 class="form">
-                VIEW ACCOUNT
+                VIEW ACCOUNT STUDENT
             </h2>
             <fieldset id="create">
                 <form th:action="@{/updateUser}" method="post" th:object="${profileUser}">
@@ -154,7 +154,7 @@ button:focus {
                         <a class="back" th:href="@{/}">BACK</a>
                 
                         <input type="submit" value="UPDATE">
-                        <input type="delete" value="DELETE">
+                        <button type="submit" class="delete" th:formaction="@{/deleteStudent}">DELETE</button>
                     </div>
 
                 </form>

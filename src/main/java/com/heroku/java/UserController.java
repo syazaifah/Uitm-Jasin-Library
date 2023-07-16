@@ -190,23 +190,17 @@ public class UserController {
 
 
     @PostMapping("/deleteUser")
-    public String deleteUser(HttpSession session, Model model) {
-        String email = (String) session.getAttribute("email");
+    public String deleteStudent(HttpSession session, Model model) {
+        String studemail = (String) session.getAttribute("studemail");
 
-        if (email != null) {
+        if (studemail != null) {
             try (Connection connection = dataSource.getConnection()) {
-                String sql = "DELETE FROM userdata WHERE email=?";
+                String sql = "DELETE FROM student WHERE studemail=?";
                 PreparedStatement statement = connection.prepareStatement(sql);
-                statement.setString(1, email);
+                statement.setString(1, studemail);
 
-                int rowsAffected = statement.executeUpdate();
-
-                if (rowsAffected > 0) {
-                    session.invalidate();
-                    return "redirect:/userlogin";
-                } else {
-                    System.out.println("Delete failed");
-                }
+                statement.executeUpdate();
+            return "redirect:/userHome";
             } catch (SQLException e) {
                 e.printStackTrace();
                 return "deleteError";

@@ -1,14 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UiTM Jasin Library System</title>
-    <link rel="icon" type="image/x-icon" href="img/book.png">
-</head>
-
-<style>
- body{
+    <title>Create Fine</title>
+    <style>
+        body{
     background-image: url("img/bookshelf.jpg");
     background-attachment: fixed;
     background-position: center;
@@ -129,7 +124,7 @@
         color: black;
         }
 
-        input[type="text"], input[type="number"], select{
+        input[type="text"], input[type="date"], input[type="number"]{
         margin-left: 90px;
         border-radius: 5px;
         background-color: gainsboro;
@@ -150,8 +145,8 @@
             font-size: 18px;
             padding: 5px 30px;
         }
-</style>
-
+    </style>
+</head>
 <body>
     <header>
         <nav class="nav">
@@ -161,38 +156,104 @@
     </header>
 
     <fieldset id="adCreate">
-    <h1>ADD BOOK FORM</h1>
+    <h1>CREATE FINE FORM</h1>
     <fieldset id="create">
-    <form id="borrow-form" th:action="@{/addBookLib}" method="post"  modelAttribute="addBookLib" th:object="${addBookLib}">
+    <form id="fine-form" onsubmit="return false;">
         <div class="form-group">
-            <label for="bookid">Book ID:</label>
-            <input type="text" id="bookid" name="bookid" required>
+            <label for="fee-id">Fee ID:</label>
+            <input type="text" id="fee-id" required>
         </div>
         <div class="form-group">
-            <label for="booktitle">Book Title:</label>
-            <input type="text" id="booktitle" name="booktitle" required>
+            <label for="student-id">Student ID:</label>
+            <input type="text" id="student-id" required>
         </div>
         <div class="form-group">
-            <label for="author">Author:</label>
-            <input type="text" id="author" name="author" required>
+            <label for="book-id">Borrow ID:</label>
+            <input type="text" id="borrow-id" required>
         </div>
         <div class="form-group">
-            <label for="status">Status:</label>
-            <select name="status">
-                <option value="Available">Available</option>
-                <option value="Unavailable">Unavailable</option>
-            </select>
+            <label for="amountPay">Fine Amount (RM):</label>
+            <input type="date" id="amountPay" required>
         </div>
         <div class="form-group">
-            <label for="quantity">Book Quantity:</label>
-            <input type="number" id="quantity" name="bookquantity" required>
+            <label for="statusPayment">Status Payment:</label>
+            <input type="number" id="statusPayment" readonly>
         </div>
         <div class="form-group">
-            <button type="submit" class="submit" onclick="submitForm()">Submit</button>
+            <button type="submit" class="submit" onclick="submitForm()">Create</button>
         </div>
     </form>
     </fieldset>
     </fieldset>
 
+    <div id="error-popup" class="popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closePopup('error-popup')">X</span>
+            <h2>Please fill in all form fields</h2>
+        </div>
+    </div>
+
+    <div id="success-popup" class="popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closePopup('success-popup')">X</span>
+            <h2>User fine has been created</h2>
+            <p>Add more users?</p>
+            <button class="pop" onclick="addMoreUsers()">Yes</button>
+            <button class="pop" onclick="saveProgress()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function submitForm() {
+            var studentId = document.getElementById('student-id').value;
+            var bookId = document.getElementById('book-id').value;
+            var supposedReturnDate = document.getElementById('supposed-return-date').value;
+            var returnDate = document.getElementById('return-date').value;
+
+            if (studentId === '' || bookId === '' || supposedReturnDate === '' || returnDate === '') {
+                displayPopup('error-popup');
+            } else {
+                var fineAmount = calculateFineAmount(supposedReturnDate, returnDate);
+                document.getElementById('fine-amount').value = fineAmount.toFixed(2);
+                displayPopup('success-popup');
+            }
+        }
+
+        function calculateFineAmount(supposedReturnDate, returnDate) {
+            var dueDate = new Date(supposedReturnDate);
+            var actualReturnDate = new Date(returnDate);
+            var daysLate = Math.floor((actualReturnDate - dueDate) / (1000 * 60 * 60 * 24));
+
+            if (daysLate >= 1 && daysLate <= 7) {
+                return 4.00;
+            } else if (daysLate >= 8 && daysLate <= 14) {
+                return 8.00;
+            } else if (daysLate > 14) {
+                return 10.00;
+            } else {
+                return 0.00;
+            }
+        }
+
+        function displayPopup(popupId) {
+            var popup = document.getElementById(popupId);
+            popup.style.display = 'block';
+        }
+
+        function closePopup(popupId) {
+            var popup = document.getElementById(popupId);
+            popup.style.display = 'none';
+        }
+
+        function addMoreUsers() {
+            saveProgress();
+            window.location.href = "create-fine.html";
+        }
+
+        function saveProgress() {
+            // Here, you can write code to save the form data
+            alert("Form data saved!");
+        }
+    </script>
 </body>
 </html>

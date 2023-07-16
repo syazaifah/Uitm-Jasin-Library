@@ -5,7 +5,7 @@
     <link rel="icon" type="image/x-icon" href="img/book.png">
 
     <style>
-       body {
+        body {
             background-image: url("img/back6.jpg");
             background-attachment: fixed;
             background-position: center;
@@ -62,21 +62,28 @@
             cursor: pointer;
         }
 
-        .link {
-        font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        font-weight: 800;
-        font-size: 20px;
-        text-decoration: none;
-        color: rgb(0, 0, 0);
-        margin-left: 20px;
-        display: inline-block;
-        padding: 10px;
-    }
+        .trolley-icon {
+            width: 24px;
+            height: 24px;
+            fill: #000;
+            cursor: pointer;
+        }
 
-    .link:hover {
-        background-color: rgba(0, 0, 0, 0.1);
-        border-radius: 4px;
-    }
+        .link {
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 800;
+            font-size: 20px;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            margin-left: 20px;
+            display: inline-block;
+            padding: 10px;
+        }
+
+        .link:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
     </style>
 
     <script>
@@ -107,6 +114,12 @@
             // Redirect to profileUser.html
             window.location.href = "profileUser.html";
         }
+
+        function openCart() {
+            // Redirect to cart.html or perform any other cart-related action
+            console.log("Opening cart");
+            // Add your cart logic here
+        }
     </script>
 </head>
 <body>
@@ -117,19 +130,22 @@
         </h1>
     </header>
 
-    
     <nav class="nav">
         <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" onclick="searchBooks()">
             <path d="M14.5 13h-.8l-.3-.3c1.1-1.3 1.8-3 1.8-4.7C15.2 3.6 11.6 0 7.5 0S0 3.6 0 7.7s3.6 7.7 7.7 7.7c1.7 0 3.4-.5 4.7-1.8l.3.3v.8l5 5 1.5-1.5-5-5zm-7 0C4.6 13 2 10.4 2 7.7S4.6 2.5 7.3 2.5s5.3 2.6 5.3 5.3-2.6 5.2-5.3 5.2z"/>
+        </svg><br><br>
+        <br>
+        <svg class="trolley-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" onclick="openCart()">
+            <path d="M20 6h-4V4c0-1.1-.9-2-2-2H10c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v1l2.5 9c.2.7.8 1.3 1.5 1.3h10c.7 0 1.3-.6 1.5-1.3L22 9V8c0-1.1-.9-2-2-2zm-9-2h4v2h-4V4zM8 6V4h4v2H8zm11.2 9H4.8L3 8h18l-1.2 7zm-11-4l-.6-2h7.2l-.6 2H8.2z"/>
         </svg>
+        <br>
+        <a th:href="@{/bookListLib}" class="link">Book List</a>
         <a class="link" href="#" onclick="logout()">Logout</a>
         <a th:href="@{/profileUser}">
-            <svg class="profile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
+            <svg class="profile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4zm0-10c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6 2.7-6 6-6z"/>
             </svg>
         </a>
-        
     </nav>
-
 </body>
 </html>

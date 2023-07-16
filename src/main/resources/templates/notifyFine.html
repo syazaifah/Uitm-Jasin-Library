@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notify Fine</title>
+</head>
+<body>
+    <h1>Notify Fine</h1>
+    <form id="notifyFineForm">
+        <label for="studentEmail">Student Email:</label>
+        <input type="email" id="studentEmail" name="studentEmail" required>
+        <br>
+        <label for="fineAmount">Fine Amount:</label>
+        <input type="number" id="fineAmount" name="fineAmount" required>
+        <br>
+        <label for="fineDescription">Fine Description:</label>
+        <textarea id="fineDescription" name="fineDescription" required></textarea>
+        <br>
+        <button type="submit">Notify Fine</button>
+    </form>
+
+    <script>
+        document.getElementById("notifyFineForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Get form values
+            const studentEmail = document.getElementById("studentEmail").value;
+            const fineAmount = document.getElementById("fineAmount").value;
+            const fineDescription = document.getElementById("fineDescription").value;
+
+            // Send fine notification request to the server
+            fetch("/notifyFine", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    studentEmail: studentEmail,
+                    fineAmount: fineAmount,
+                    fineDescription: fineDescription
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Fine notification sent successfully!");
+                } else {
+                    alert("Failed to send fine notification. Please try again.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("An error occurred while sending the fine notification.");
+            });
+        });
+    </script>
+</body>
+</html>

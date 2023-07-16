@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.heroku.Modal.Book;
 
@@ -14,6 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -27,19 +29,20 @@ public class BookController {
     }
 
    @PostMapping("/addBookLib")
-public String addBook(HttpSession session, @ModelAttribute("addBookLib") Book book, BindingResult result) {
+  public String addBook(HttpSession session, @ModelAttribute("addBookLib") Book book, BindingResult result) {
     // if (result.hasErrors()) {
     //     return "addBookLib"; // Return the form again if there are validation errors
     // }
     
     try (Connection connection = dataSource.getConnection()) {
-        String sql = "INSERT INTO book (bookid, booktitle, author, bookquantity) VALUES (?,?,?,?,?)"; 
+        String sql = "INSERT INTO book (bookid, booktitle, author, status, bookquantity) VALUES (?,?,?,?,?)"; 
         PreparedStatement statement = connection.prepareStatement(sql);
 
         statement.setString(1, book.getBookid());
         statement.setString(2, book.getBooktitle());
         statement.setString(3, book.getAuthor());
-        statement.setInt(4, book.getBookquantity());
+        statement.setString(4, book.getStatus());
+        statement.setInt(5, book.getBookquantity());
 
         // Check if the bookquantity field is empty or null
         // if (book.getQuantity()!= 0) {
@@ -78,9 +81,10 @@ public String addBook(HttpSession session, @ModelAttribute("addBookLib") Book bo
                 String bookid = rs.getString("bookid");
                 String booktitle = rs.getString("booktitle");
                 String author = rs.getString("author");
+                String status = rs.getString("status");
                 Integer bookquantity = rs.getInt("bookquantity");
 
-                Book book = new Book(bookid, booktitle, author, bookquantity);
+                Book book = new Book(bookid, booktitle, author, status, bookquantity);
                 books.add(book);
             }
             model.addAttribute("books", books);
@@ -100,7 +104,111 @@ public String addBook(HttpSession session, @ModelAttribute("addBookLib") Book bo
             return "redirect:/";
         }
     }
-} 
 
 
-    
+     @GetMapping("/updateBookList")
+    public String showUpdateForm(@RequestParam("bookId") String bookId, Model model) {
+    try (Connection connection = dataSource.getConnection()) {
+      String sql = "SELECT * FROM book WHERE bookid = ?";
+      PreparedStatement statement = connection.prepareStatement(sql);
+      statement.setString(1, bookId);
+      ResultSet rs = statement.executeQuery();
+      if (rs.next()) {
+        String bookid = rs.getString("bookid");
+        String booktitle = rs.getString("booktitle");
+        String author = rs.getString("author");
+        String status = rs.getString("status");
+        Integer bookquantity = rs.getInt("bookquantity");
+
+        Book book = new Book(bookid, booktitle, author, status, bookquantity);
+        model.addAttribute("book", book);
+      }
+      connection.close();
+      return "updateBookList";
+    } catch (SQLException sqe) {
+      sqe.printStackTrace();
+      return "error";
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "error";
+    }
+  }
+
+
+    @PostMapping("/updateBookList")
+     public String updateBook(@ModelAttribute("book") Book book) {
+    try (Connection connection = dataSource.getConnection()) {
+      String sql = "UPDATE book SET booktitle = ?, author = ?, status = ?, bookquantity = ? WHERE bookid = ?";
+      PreparedStatement statement = connection.prepareStatement(sql);
+
+      statement.setString(1, book.getBooktitle());
+      statement.setString(2, book.getAuthor());
+      statement.setString(3, book.getStatus());
+      statement.setInt(4, book.getBookquantity());
+      statement.setString(5, book.getBookid());
+      statement.executeUpdate();
+
+      connection.close();
+      return "redirect:/bookListLib";
+    } catch (SQLException sqe) {
+      sqe.printStackTrace();
+      return "error";
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "error";
+    }
+  }
+
+  @PostMapping("/deleteBookList")
+  public String deleteBookList(@RequestParam("bookId") String bookId) {
+      try (Connection connection = dataSource.getConnection()) {
+          String sql = "DELETE FROM book WHERE bookid = ?";
+          PreparedStatement statement = connection.prepareStatement(sql);
+          statement.setString(1, bookId);
+          statement.executeUpdate();
+          connection.close();
+          return "redirect:/bookListLib";
+      } catch (SQLException sqe) {
+          sqe.printStackTrace();
+          return "error";
+      } catch (Exception e) {
+          e.printStackTrace();
+          return "error";
+      }
+  }
+
+
+@GetMapping("/bookListUser")
+    public String viewBookListUser(HttpSession session, Model model) {
+        ArrayList<Book> books = new ArrayList<>();
+        try (Connection con = dataSource.getConnection()) {
+            final var statement = con.prepareStatement("SELECT * FROM book");
+            final var rs = statement.executeQuery();
+            while (rs.next()) {
+                String bookid = rs.getString("bookid");
+                String booktitle = rs.getString("booktitle");
+                String author = rs.getString("author");
+                String status = rs.getString("status");
+                Integer bookquantity = rs.getInt("bookquantity");
+
+                Book book = new Book(bookid, booktitle, author, status, bookquantity);
+                books.add(book);
+            }
+            model.addAttribute("books", books);
+            return "bookListUser";
+        } catch (SQLException sqe) {
+            System.out.println("Error Code = " + sqe.getErrorCode());
+            System.out.println("SQL state = " + sqe.getSQLState());
+            System.out.println("Message = " + sqe.getMessage());
+            System.out.println("printTrace /n");
+            sqe.printStackTrace();
+
+            return "redirect:/";
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("E message : " + e.getMessage());
+
+            return "redirect:/";
+        }
+    }
+  }

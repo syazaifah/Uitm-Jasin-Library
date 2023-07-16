@@ -200,14 +200,8 @@ public String profileLib(HttpSession session, Model model) {
                 PreparedStatement statement = connection.prepareStatement(sql);
                 statement.setString(1, libemail);
 
-                int rowsAffected = statement.executeUpdate();
-
-                if (rowsAffected > 0) {
-                    session.invalidate();
-                    return "redirect:/userlogin";
-                } else {
-                    System.out.println("Delete failed");
-                }
+                statement.executeUpdate();
+            return "redirect:/libHome";
             } catch (SQLException e) {
                 e.printStackTrace();
                 return "deleteError";

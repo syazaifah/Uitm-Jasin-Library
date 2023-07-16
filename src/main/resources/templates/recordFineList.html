@@ -76,7 +76,7 @@ table, th, td {
 
 table{
     width: 90%;
-    margin-top: 50px;
+    margin-top: 80px;
     margin-left: 70px;
 }
 
@@ -122,33 +122,29 @@ table{
         </nav>
     </header>
 
-    <a th:href="@{/addBookLib}"><button type="submit" class="add">ADD BOOKS</button></a>
-
     <table>
         <tr>
-           <th class="title">BOOK ID</th>
-           <th class="title">BOOK TITLE</th>
-           <th class="title">AUTHOR</th>
-           <th class="title">STATUS</th>
-           <th class="title">BOOK QUANTITY</th>
-           <th class="title">UPDATE</th>
-           <th class="title">DELETE</th>
+           <th class="title">NO</th>
+           <th class="title">STUDENT ID</th>
+           <th class="title">BORROW ID</th>
+           <th class="title">AMOUNT PAY (RM)</th>
+           <th class="title">STATUS PAYMENT</th>
         </tr>
-        <tr th:each="book : ${books}">
-           <td class="left" th:text="${book.bookid}"></td>
-           <td class="left" th:text="${book.booktitle}"></td>
-           <td class="left" th:text="${book.author}"></td>
-           <td class="left" th:text="${book.status}"></td>
-           <td class="left" th:text="${book.bookquantity}"></td>
-           <td class="left">
-            <a class="update-link" th:href="@{/updateBookList(bookId=${book.bookid})}">UPDATE</a></td>
-            <td class="left">
-                <form action="/deleteBookList" method="post">
-                  <input type="hidden" name="bookId" th:value="${book.bookid}" />
-                  <button type="submit" class="delete">DELETE</button>
-                </form>
-            </td>
+        <tr>
+           <th class="left">1</th>
+           <th class="left">2021221643</th>
+           <th class="left">15</th>
+           <th class="left">4.00</th>
+           <th class="left">Paid</th>
         </tr>
-    </table>
+        <tr>
+            <th class="left">2</th>
+            <th class="left">2021887123</th>
+            <th class="left">50</th>
+            <th class="left">4.00</th>
+            <th class="left">Paid</th>
+        <tr>
+        </table>
+
 </body>
 </html>
