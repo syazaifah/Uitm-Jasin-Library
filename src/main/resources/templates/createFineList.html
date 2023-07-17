@@ -158,27 +158,35 @@
     <fieldset id="adCreate">
     <h1>CREATE FINE FORM</h1>
     <fieldset id="create">
-    <form id="fine-form" onsubmit="return false;">
-        <div class="form-group">
-            <label for="fee-id">Fee ID:</label>
-            <input type="text" id="fee-id" required>
-        </div>
+    <form id="fine-form"  th:action="@{/createFineList}" method="post"  modelAttribute="addFine" th:object="${addFine}">
+        <!-- <div class="form-group">
+            <label for="fine-id">Fine ID:</label>
+            <input type="number" id="fee-id" name ="fineid" required>
+        </div> -->
+        <!-- <input type="hidden" name="libid" th:value="${libid}"> -->
         <div class="form-group">
             <label for="student-id">Student ID:</label>
-            <input type="text" id="student-id" required>
+            <input type="text" id="student-id" name ="studid" th:value="${studentId}" readonly>
         </div>
         <div class="form-group">
             <label for="book-id">Borrow ID:</label>
-            <input type="text" id="borrow-id" required>
+            <input type="text" id="borrow-id"  name ="borrowid" th:value="${borrowId}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="actual-date-return">Actual Date Return:</label>
+            <input type="date" id="actualdatereturn" name ="actualdatereturn" required>
         </div>
         <div class="form-group">
             <label for="amountPay">Fine Amount (RM):</label>
-            <input type="date" id="amountPay" required>
+            <input type="number" id="amountPay"  name ="amountpay" required>
         </div>
-        <div class="form-group">
-            <label for="statusPayment">Status Payment:</label>
-            <input type="number" id="statusPayment" readonly>
-        </div>
+        <!-- <div class="form-group">
+            <label for="status">Status Payment:</label>
+            <select name="statuspayment">
+                <option value="Available">Paid</option>
+                <option value="Unavailable">Unpaid</option>
+            </select>
+        </div> -->
         <div class="form-group">
             <button type="submit" class="submit" onclick="submitForm()">Create</button>
         </div>

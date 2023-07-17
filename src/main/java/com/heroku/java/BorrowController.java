@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.heroku.Modal.Borrow;
 
@@ -51,26 +52,25 @@ public class BorrowController {
         }
     }
 
-    @GetMapping("/borrrowerList")
-    public String viewBorrrowerList(HttpSession session, Model model) {
+    @GetMapping("/borrowerList")
+    public String viewBorrrowerList(HttpSession session, Model model, Borrow borroww) {
         ArrayList<Borrow> borrows = new ArrayList<>();
         try (Connection con = dataSource.getConnection()) {
-            final var statement = con.prepareStatement(
-                    "SELECT studid, borrowid, bookid, bookquantity  dateborrow, datereturn FROM borrow");
+            final var statement = con.prepareStatement("SELECT studid, borrowid, bookid,bookquantity, dateborrow, datereturn FROM borrow ORDER BY studid");
             final var rs = statement.executeQuery();
             while (rs.next()) {
                 String studid = rs.getString("studid");
                 String borrowid = rs.getString("borrowid");
                 String bookid = rs.getString("bookid");
-                Integer bookquantity = rs.getInt("bookquantity");
+                int bookquantity = rs.getInt("bookquantity");
                 Date dateborrow = rs.getDate("dateborrow");
                 Date datereturn = rs.getDate("datereturn");
-
+                // borroww.setDatereturn(datereturn);
                 Borrow borrow = new Borrow(studid, borrowid, bookid, bookquantity, dateborrow, datereturn);
                 borrows.add(borrow);
             }
-            model.addAttribute("books", borrows);
-            return "borrrowerList";
+            model.addAttribute("borrows", borrows);
+            return "borrowerList";
         } catch (SQLException sqe) {
             System.out.println("Error Code = " + sqe.getErrorCode());
             System.out.println("SQL state = " + sqe.getSQLState());
@@ -87,4 +87,23 @@ public class BorrowController {
         }
     }
 
+
+
+ @GetMapping("/deleteBorrow")
+    public String deleteBorrow(@RequestParam("borrowid") Integer borrowid) {
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "DELETE FROM borrow WHERE borrowid = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, borrowid);
+            statement.executeUpdate();
+            connection.close();
+            return "redirect:/borrowerList";
+        } catch (SQLException sqe) {
+            sqe.printStackTrace();
+            return "error";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
 }

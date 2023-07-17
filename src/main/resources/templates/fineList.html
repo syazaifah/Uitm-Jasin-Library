@@ -9,7 +9,7 @@
 
 <style>
 body{
-    background-image: url("img/bookshelf.jpg");
+    background-image: url("img/back8.jpeg");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -122,45 +122,34 @@ table{
         </nav>
     </header>
 
-    <a href="createfine.html"><button type="submit" class="add">CREATE FINE</button></a>
+    <a th:href="@{/createFineList}"><button type="submit" class="add">CREATE FINE</button></a>
 
     <table>
         <tr>
-           <th class="title">FEE ID</th>
+           <th class="title">FINE ID</th>
            <th class="title">STUDENT ID</th>
            <th class="title">BORROW ID</th>
+           <th class="title">ACTUAL DATE RETURN</th>
            <th class="title">AMOUNT PAY (RM)</th>
-           <th class="title">STATUS PAYMENT</th>
            <th class="title">UPDATE</th>
            <th class="title">DELETE</th>
         </tr>
-        <tr>
-           <th class="left">1</th>
-           <th class="left">2021886032</th>
-           <th class="left">20</th>
-           <th class="left">4.00</th>
-           <th class="left">InProgress</th>
-           <th class="left"><button type="submit" class="update">UPDATE</button></th>
-           <th class="left"><button type="submit" class="delete">DELETE</button></th>
-        </tr>
-        <tr>
-            <th class="left">2</th>
-            <th class="left">2021553788</th>
-            <th class="left">35</th>
-            <th class="left">4.00</th>
-            <th class="left">InProgress</th>
-            <th class="left"><button type="submit" class="update">UPDATE</button></th>
-            <th class="left"><button type="submit" class="delete">DELETE</button></th>
-        <tr>
-        <tr>
-            <th class="left">3</th>
-            <th class="left">2021889662</th>
-            <th class="left">78</th>
-            <th class="left">7.00</th>
-            <th class="left">InProgress</th>
-            <th class="left"><button type="submit" class="update">UPDATE</button></th>
-            <th class="left"><button type="submit" class="delete">DELETE</button></th>
-        <tr>
+         <tr th:each="fine : ${fines}">
+            <td class="left" th:text="${fine.fineid}"></td>
+            <td class="left" th:text="${fine.studid}"></td>
+            <td class="left" th:text="${fine.borrowid}"></td>
+            <td class="left" th:text="${fine.actualdatereturn}"></td>
+            <td class="left" th:text="${fine.amountpay}"></td>
+            <td class="left">
+                
+                 <a class="update-link" th:href="@{/updateFineList(fineId=${fine.fineid})}">UPDATE</a></td>
+             <td class="left">
+                 <form action="/deleteFine" method="post">
+                   <input type="hidden" name="fineId" th:value="${fine.fineid}" />
+                   <button type="submit" class="delete">DELETE</button>
+                 </form>
+             </td>
+         </tr>
         </table>
 
 </body>

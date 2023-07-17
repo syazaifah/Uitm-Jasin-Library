@@ -60,7 +60,7 @@ public class LibrarianController {
     @PostMapping("/loginLib")
     public String libHome(HttpSession session, @ModelAttribute("loginLib") Librarian librarian, Model model) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT libemail, libpassword FROM librarian";
+            String sql = "SELECT libid, libemail, libpassword FROM librarian";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -74,6 +74,7 @@ public class LibrarianController {
                 if (libemail.equals(librarian.getEmail()) && libpassword.equals(librarian.getPassword())) {
                     session.setAttribute("libemail", librarian.getEmail());
                     session.setAttribute("libid", libid);
+                    System.out.println("libid+ "+libid);
                     returnPage = "redirect:/libHome";
                     break;
                 } else {
@@ -146,6 +147,8 @@ public String profileLib(HttpSession session, Model model) {
                 String libphonenumber = resultSet.getString("libphonenumber");
                 String libpassword = resultSet.getString("libpassword");
 
+
+                session.setAttribute("libid", libid);
                 System.out.println("name from db: " + libname);
                 Librarian profileLib = new Librarian(libid, libname, libphonenumber, libemail, libpassword);
                 model.addAttribute("profileLib", profileLib);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,87 +9,89 @@
 </head>
 
 <style>
-body{
-    background-image: url("img/back8.jpeg");
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-}
+    body {
+        background-image: url("img/back8.jpeg");
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+    }
 
-.logo{
-    width: 12%;
-}
+    .logo {
+        width: 12%;
+    }
 
-.nav{
-    background-color:#ffffff;
-    position: relative;
-    display: flex;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-top: -8px;
-    height: 80px;
-    font-size: 1.4rem;
-    align-items: center;
-}
+    .nav {
+        background-color: #ffffff;
+        position: relative;
+        display: flex;
+        margin-left: -8px;
+        margin-right: -8px;
+        margin-top: -8px;
+        height: 80px;
+        font-size: 1.4rem;
+        align-items: center;
+    }
 
-.link{
-    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: 800;
-    font-size: 20px;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    padding: 10px;
-    display:inline;
-    margin-left: 20px;
-} 
+    .link {
+        font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-weight: 800;
+        font-size: 20px;
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        padding: 10px;
+        display: inline;
+        margin-left: 20px;
+    }
 
-#home{
-    margin-left: 1250px;
-}
+    #home {
+        margin-left: 1250px;
+    }
 
-table, th, td {
-    border: 2px solid black;
-    border-collapse: collapse; 
-}
+    table,
+    th,
+    td {
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
 
-table{
-    width: 90%;
-    margin-top: 100px;
-    margin-left: 70px;
-}
+    table {
+        width: 90%;
+        margin-top: 100px;
+        margin-left: 70px;
+    }
 
-.left{
-    padding: 10px;   
-    background-color:aliceblue;
-}
+    .left {
+        padding: 10px;
+        background-color: aliceblue;
+    }
 
-.title{
-    font-size: 18px;
-    padding: 9px;  
-    font-weight: 600;
-    background-color: gray;
-}
+    .title {
+        font-size: 18px;
+        padding: 9px;
+        font-weight: 600;
+        background-color: gray;
+    }
 
-.return{
-    padding: 5px 20px;
-    background:#5cd9ff;
-    border-color: rgb(255, 255, 255);
-    outline: none;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 500;
-    border-radius: 5px;
-    color: white;
-}
+    .return {
+        padding: 5px 20px;
+        background: #5cd9ff;
+        border-color: rgb(255, 255, 255);
+        outline: none;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        border-radius: 5px;
+        color: white;
+    }
 
-.return:hover{
-    background-color: #8FBC8F;
-}
+    .return:hover {
+        background-color: #8FBC8F;
+    }
 
-.return:focus{
-    background-color: #85ad85;
-    outline: none;
-}
+    .return:focus {
+        background-color: #85ad85;
+        outline: none;
+    }
 </style>
 
 <body>
@@ -101,26 +104,31 @@ table{
 
     <table>
         <tr>
-           <th class="title">STUDENT ID</th>
-           <th class="title">BORROW ID</th>
-           <th class="title">BOOK ID</th>
-           <th class="title">BOOK QUANTITY</th>
-           <th class="title">DATE BORROW</th>
-           <th class="title">DATE RETURN</th> 
-           <th class="title">RETURN</th>
+            <th class="title">STUDENT ID</th>
+            <th class="title">BORROW ID</th>
+            <th class="title">BOOK ID</th>
+            <th class="title">BOOK QUANTITY</th>
+            <th class="title">DATE BORROW</th>
+            <th class="title">DATE RETURN</th>
+            <th class="title">RETURN</th>
+            <th class="title">FINE</th>
         </tr>
-        <tr th:each="book : ${books}">
-           <td class="left" th:text="${borrow.studentid}"></td>
-           <td class="left" th:text="${borrow.borrowid}"></td>
-           <td class="left" th:text="${borrow.bookid}"></td>
-           <td class="left" th:text="${borrow.booktitle}"></td>
-           <td class="left" th:text="${borrow.bookquantity}"></td>
-           <td class="left" th:text="${borrow.dateborrow}"></td>
-           <td class="left" th:text="${borrow.datereturn}"><button><a class="update-link" th:href="@{/bookBorrowForm(bookId=${book.bookid})}">RETURN</a></td></button></td>
-           
-  
+        <tr th:each="borrow : ${borrows}">
+            <td class="left" th:text="${borrow.studid}"></td>
+            <td class="left" th:text="${borrow.borrowid}"></td>
+            <td class="left" th:text="${borrow.bookid}"></td>
+            <td class="left" th:text="${borrow.bookquantity}"></td>
+            <td class="left" th:text="${borrow.dateborrow}"></td>
+            <td class="left" th:text="${borrow.datereturn}"></td>
+            <td>
+                <a th:href="@{/deleteBorrow(borrowid=${borrow.borrowid})}"><button>Return</button></a>
+            </td>
+            <td>
+                <a th:href="@{/createFineList(borrowid=${borrow.borrowid}, studid=${borrow.studid})}"><button>Fine</button></a>
+            </td>
         </tr>
     </table>
-    
+
 </body>
+
 </html>

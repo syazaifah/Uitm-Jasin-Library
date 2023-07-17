@@ -142,7 +142,7 @@
            <td class="left" th:text="${book.status}"></td>
            <td class="left" th:text="${book.bookquantity}"></td>
            <td class="left">
-            <a class="update-link" th:href="@{/updateBookList(bookId=${book.bookid})}">UPDATE</a></td>
+                <a class="update-link" th:href="@{/updateBookList(bookId=${book.bookid})}">UPDATE</a></td>
             <td class="left">
                 <form action="/deleteBookList" method="post">
                   <input type="hidden" name="bookId" th:value="${book.bookid}" />
