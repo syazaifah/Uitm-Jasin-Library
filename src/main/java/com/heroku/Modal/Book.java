@@ -7,6 +7,10 @@ public class Book {
     private String status;
     private int bookquantity;
 
+
+    public Book() {
+    }
+    
     public Book(String bookid, String booktitle, String author, String status, int bookquantity) {
         this.bookid = bookid;
         this.booktitle = booktitle;
