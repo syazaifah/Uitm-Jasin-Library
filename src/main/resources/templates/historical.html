@@ -9,7 +9,7 @@
 
 <style>
 body{
-    background-image: url("img/bookshelf.jpg");
+    background-image: url("img/back8.jpeg");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -20,7 +20,7 @@ body{
 }
 
 .nav{
-    background-color:#1c441c;
+    background-color:#ffffff;
     position: relative;
     display: flex;
     margin-left: -8px;
@@ -36,14 +36,14 @@ body{
     font-weight: 800;
     font-size: 20px;
     text-decoration: none;
-    color: white;
+    color: rgb(59, 241, 220);
     padding: 10px;
     display:inline;
     margin-left: 20px;
 } 
 
 #home{
-    margin-left: 1150px;
+    margin-left: 1250px;
 }
 
 table, th, td {
@@ -56,6 +56,7 @@ table{
     margin-top: 50px;
     margin-left: 70px;
 }
+
 
 .left{
     padding: 10px;   
@@ -116,7 +117,7 @@ table{
            <td class="left" th:text="${book.status}"></td>
            <td class="left" th:text="${book.bookquantity}"></td>
            <td class="left">
-            <a class="update-link" th:href="@{/updateBookList(bookId=${book.bookid})}">ADD TO CART</a></td>
+            <a class="update-link" th:href="@{/bookBorrowForm(bookId=${book.bookid})}">ADD TO CART</a></td>
   
         </tr>
     </table>

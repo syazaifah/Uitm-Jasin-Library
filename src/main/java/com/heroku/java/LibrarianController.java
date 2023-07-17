@@ -67,11 +67,13 @@ public class LibrarianController {
             String returnPage = "";
 
             while (resultSet.next()) {
+                String libid = resultSet.getString("libid");
                 String libemail = resultSet.getString("libemail");
                 String libpassword = resultSet.getString("libpassword");
 
                 if (libemail.equals(librarian.getEmail()) && libpassword.equals(librarian.getPassword())) {
                     session.setAttribute("libemail", librarian.getEmail());
+                    session.setAttribute("libid", libid);
                     returnPage = "redirect:/libHome";
                     break;
                 } else {

@@ -6,13 +6,19 @@ public class Book {
     private String author;
     private String status;
     private int bookquantity;
-    
+
     public Book(String bookid, String booktitle, String author, String status, int bookquantity) {
         this.bookid = bookid;
         this.booktitle = booktitle;
         this.author = author;
         this.status = status;
         this.bookquantity = bookquantity;
+    }
+
+    public Book(String bookid, String booktitle, String author) {
+        this.bookid = bookid;
+        this.booktitle = booktitle;
+        this.author = author;
     }
 
     public String getBookid() {

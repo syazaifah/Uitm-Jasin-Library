@@ -1,72 +1,76 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>UiTM Jasin Library System</title>
     <link rel="icon" type="image/x-icon" href="img/book.png">
     <style>
-        body{
-    background-image: url("img/bookshelf.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-}
-
-.logo{
-    width: 12%;
-}
-
-.nav{
-    background-color:#1c441c;
-    position: relative;
-    display: flex;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-top: -8px;
-    height: 80px;
-    font-size: 1.4rem;
-    align-items: center;
-}
-
-.link{
-    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-weight: 800;
-    font-size: 20px;
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    display:inline;
-    margin-left: 20px;
-} 
-
-#home{
-    margin-left: 1150px;
-}
-
-#adCreate{
-        border-radius: 10px;
-        background-color:#f2f9ee;
-        margin-top: 70px;
-        margin-left: 440px;
-        width: 500px;
-        height: 420px;
+        body {
+            background-image: url("img/back8.jpeg");
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
         }
 
-        #create{
-        margin-top: 5px;
-        margin-left: 20px;
-        width: 425px;
-        height: 290px;
-        border-style: solid;
-        border-width: 3px;
-        border-color: black;
-        font-size: 16px;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        font-weight: 600;
-        color: black;
+        .logo {
+            width: 12%;
+        }
+
+        .nav {
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            margin-left: -8px;
+            margin-right: -8px;
+            margin-top: -8px;
+            height: 80px;
+            font-size: 1.4rem;
+            align-items: center;
+        }
+
+        .link {
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 800;
+            font-size: 20px;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            display: inline;
+            margin-left: 20px;
+        }
+
+        #home {
+            margin-left: 1250px;
+        }
+
+        #adCreate {
+            border-radius: 10px;
+            background-color: #f2f9ee;
+            margin-top: 70px;
+            margin-left: auto;
+            /* Centers the form horizontally */
+            margin-right: auto;
+            /* Centers the form horizontally */
+            width: 500px;
+            height: 420px;
+        }
+
+        #create {
+            margin-top: 5px;
+            margin-left: 20px;
+            width: 425px;
+            height: 290px;
+            border-style: solid;
+            border-width: 3px;
+            border-color: black;
+            font-size: 16px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: 600;
+            color: black;
         }
 
         h1 {
-            color:black;
+            color: black;
             font-weight: 800;
             font-size: 27px;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -74,18 +78,20 @@
             text-align: center;
         }
 
-        label{
-        margin-left: 90px;
+        label {
+            margin-left: 90px;
         }
 
-        input[type="text"], input[type="date"], input[type="number"]{
-        margin-left: 90px;
-        border-radius: 5px;
-        background-color: gainsboro;
-        border-color: black;
-        width: 240px;
-        height: 20px;
-        margin-bottom: 17px;
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
+            margin-left: 90px;
+            border-radius: 5px;
+            background-color: gainsboro;
+            border-color: black;
+            width: 240px;
+            height: 20px;
+            margin-bottom: 17px;
         }
 
         .popup {
@@ -93,7 +99,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background:#8FBC8F;
+            background: #8FBC8F;
             border-color: black;
             border-radius: 20px;
             padding: 20px;
@@ -113,9 +119,9 @@
             cursor: pointer;
         }
 
-        .submit{
+        .submit {
             padding: 5px 40px;
-            background:#406b40;
+            background: #ffffff;
             border-color: black;
             outline: none;
             cursor: pointer;
@@ -124,19 +130,24 @@
             border-radius: 20px;
             margin-left: 150px;
             margin-top: 20px;
+            display: block;
+            margin: 20px auto;
+            /* Centers the button horizontally */
         }
 
-        .submit:hover, .pop:hover{
-        background-color: #8FBC8F;
+        .submit:hover,
+        .pop:hover {
+            background-color: #47d7c9;
         }
 
-        .submit:focus, .pop:focus{
-        background-color: #85ad85;
-        outline: none;
+        .submit:focus,
+        .pop:focus {
+            background-color: #032d29;
+            outline: none;
         }
 
-        .pop{
-            background:#406b40;
+        .pop {
+            background: #406b40;
             border-color: black;
             outline: none;
             cursor: pointer;
@@ -148,44 +159,53 @@
         }
     </style>
 </head>
+
 <body>
 
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
-            <a class="link" id="home" href="userHome.html">Home</a>
+            <a class="link" id="home" th:href="@{/userHome}">Home</a>
         </nav>
     </header>
 
     <fieldset id="adCreate">
-    <h1>BORROW BOOK FORM</h1>
-    <fieldset id="create">
-    <form id="borrow-form" onsubmit="return false;">
-        <div class="form-group">
-            <label for="book-title">Book Title:</label>
-            <input type="text" id="book-title" required>
-        </div>
-        <div class="form-group">
-            <label for="book-author">Book Author:</label>
-            <input type="text" id="book-author" required>
-        </div>
-        <div class="form-group">
-            <label for="book-date-borrow">Date Borrow:</label>
-            <input type="date" id="book-date-borrow" required>
-        </div>
-        <div class="form-group">
-            <label for="book-date-return">Date Return:</label>
-            <input type="date" id="book-date-return" required>
-        </div>
-        <div class="form-group">
-            <label for="book-borrow-quantity">Quantity :</label>
-            <input type="number" id="book-borrow-quantity" required>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="submit" onclick="submitForm()">Submit</button>
-        </div>
-    </form>
-    </fieldset>
+        <h1>BORROW BOOK FORM</h1>
+        <fieldset id="create">
+            <form th:action="@{/bookBorrowingForm}" method="post" id="borrow-form" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="book-title">Student ID:</label>
+                    <input type="text" name="studid" th:value="${studid}">
+                </div>
+                <div class="form-group">
+                    <label for="book-title">Book ID:</label>
+                    <input type="text" name="bookid" th:value="${book.bookid}" required>
+                </div>
+                <div class="form-group">
+                    <label for="book-title">Book Title:</label>
+                    <input type="text" name="booktitle" id="book-title" th:value="${book.booktitle}" required>
+                </div>
+                <div class="form-group">
+                    <label for="book-author">Book Author:</label>
+                    <input type="text" name="author" id="book-author" th:value="${book.author}" required>
+                </div>
+                <div class="form-group">
+                    <label for="book-date-borrow">Date Borrow:</label>
+                    <input type="date" name="dateborrow" id="book-date-borrow" required>
+                </div>
+                <div class="form-group">
+                    <label for="book-date-return">Date Return:</label>
+                    <input type="date" name="datereturn" id="book-date-return" required>
+                </div>
+                <div class="form-group">
+                    <label for="book-borrow-quantity">Quantity :</label>
+                    <input type="number" name="bookquantity" id="book-borrow-quantity" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="submit" onclick="submitForm()">Borrow</button>
+                </div>
+            </form>
+        </fieldset>
     </fieldset>
 
     <div id="error-popup" class="popup">
@@ -199,28 +219,36 @@
         <div class="popup-content">
             <span class="popup-close" onclick="closePopup('success-popup')">X</span>
             <h2>Book successfully borrowed. <br> Please pick up at UiTM Jasin Library's counter.</h2>
-            <button class="pop" onclick="borrowBooks()">Ok</button>
+            <button class="pop" onclick="redirectToUserHome()">Ok</button>
         </div>
     </div>
 
     <script>
-        function submitForm() {
+        function submitForm(event) {
             var bookTitle = document.getElementById('book-title').value;
             var bookAuthor = document.getElementById('book-author').value;
             var dateBorrow = document.getElementById('book-date-borrow').value;
-            var dateReturn = document.getElementById('book-date-return').value;
             var quantity = document.getElementById('book-borrow-quantity').value;
 
-            if (bookTitle === '' || bookAuthor === '' || dateBorrow === '' || dateReturn === '' || quantity === '') {
+            if (bookTitle === '' || bookAuthor === '' || dateBorrow === '' || quantity === '') {
                 displayPopup('error-popup');
             } else {
+                var dateBorrowObj = new Date(dateBorrow);
+                var dateReturnObj = new Date(dateBorrowObj.getTime() + (14 * 24 * 60 * 60 * 1000));
+                var dateReturn = dateReturnObj.toISOString().split('T')[0];
+                document.getElementById('book-date-return').value = dateReturn;
                 displayPopup('success-popup');
+                redirectToUserHome();
             }
         }
 
         function displayPopup(popupId) {
             var popup = document.getElementById(popupId);
             popup.style.display = 'block';
+
+            setTimeout(function () {
+                closePopup(popupId);
+            }, 5000);
         }
 
         function closePopup(popupId) {
@@ -228,9 +256,10 @@
             popup.style.display = 'none';
         }
 
-        function borrowBooks() {
-            window.location.href = "userHome.html";
+        function redirectToUserHome() {
+            window.location.href = "/userHome";
         }
     </script>
 </body>
+
 </html>

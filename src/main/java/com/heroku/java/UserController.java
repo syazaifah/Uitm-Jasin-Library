@@ -60,18 +60,21 @@ public class UserController {
     @PostMapping("/loginUser")
     public String userHome(HttpSession session, @ModelAttribute("userLogin") User user, Model model) {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT studemail, studpassword FROM student";
+            String sql = "SELECT studid,studemail, studpassword FROM student";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
             String returnPage = "";
 
             while (resultSet.next()) {
+                String studid = resultSet.getString("studid");
                 String studemail = resultSet.getString("studemail");
                 String studpassword = resultSet.getString("studpassword");
 
                 if (studemail.equals(user.getEmail()) && studpassword.equals(user.getPassword())) {
                     session.setAttribute("studemail", user.getEmail());
+                    session.setAttribute("studid", studid);
+                    System.out.println("studentid+ "+studid);
                     returnPage = "redirect:/userHome";
                     break;
                 } else {
@@ -208,5 +211,11 @@ public class UserController {
         }
 
         return "deleteError";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "index";
     }
 }

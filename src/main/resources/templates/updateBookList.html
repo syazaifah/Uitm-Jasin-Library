@@ -133,32 +133,32 @@ p{
     <div class="container">
         <fieldset id="adCreate">
             <h2 class="form">
-                UPDATE BOOK FORM
+                UPDATE BOOK LIST
             </h2>
             <fieldset id="create">
                 <form d="borrow-form" th:action="@{/updateBookList}" method="post"  modelAttribute="updateBookList" th:object="${updateBookList}">
                     <div class="form-group">
                         <label for="bookid">Book ID:</label>
-                        <input type="text" id="bookid" name="bookid" required>
+                        <input type="text" id="bookid" name="bookid" th:value="${book.bookid}" required  >
                     </div>
                     <div class="form-group">
                         <label for="booktitle">Book Title:</label>
-                        <input type="text" id="booktitle" name="booktitle" required>
+                        <input type="text" id="booktitle" name="booktitle" th:value="${book.booktitle}" required>
                     </div>
                     <div class="form-group">
                         <label for="author">Author:</label>
-                        <input type="text" id="author" name="author" required>
+                        <input type="text" id="author" name="author" th:value="${book.author}" required>
                     </div>
                     <div class="form-group">
                         <label for="status">Status:</label>
-                        <select name="status">
+                        <select name="status" th:value="${book.status}">
                             <option value="Available">Available</option>
                             <option value="Unavailable">Unavailable</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="quantity">Book Quantity:</label>
-                        <input type="number" id="quantity" name="bookquantity" required>
+                        <input type="number" id="quantity" name="bookquantity" th:value="${book.bookquantity}" required>
                     </div>
 
                     <div class="form-group">

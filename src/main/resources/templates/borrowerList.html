@@ -9,7 +9,7 @@
 
 <style>
 body{
-    background-image: url("img/bookshelf.jpg");
+    background-image: url("img/back8.jpeg");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -20,7 +20,7 @@ body{
 }
 
 .nav{
-    background-color:#1c441c;
+    background-color:#ffffff;
     position: relative;
     display: flex;
     margin-left: -8px;
@@ -36,14 +36,14 @@ body{
     font-weight: 800;
     font-size: 20px;
     text-decoration: none;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 10px;
     display:inline;
     margin-left: 20px;
 } 
 
 #home{
-    margin-left: 1150px;
+    margin-left: 1250px;
 }
 
 table, th, td {
@@ -71,8 +71,8 @@ table{
 
 .return{
     padding: 5px 20px;
-    background:#406b40;
-    border-color: black;
+    background:#5cd9ff;
+    border-color: rgb(255, 255, 255);
     outline: none;
     cursor: pointer;
     font-size: 13px;
@@ -101,42 +101,26 @@ table{
 
     <table>
         <tr>
-           <th class="title">NO</th>
-           <th class="title">USER ID</th>
-           <th class="title">BOOK TITLE</th>
+           <th class="title">STUDENT ID</th>
+           <th class="title">BORROW ID</th>
+           <th class="title">BOOK ID</th>
+           <th class="title">BOOK QUANTITY</th>
            <th class="title">DATE BORROW</th>
-           <th class="title">DATE RETURN</th>
-           <th class="title">QUANTITY</th>
+           <th class="title">DATE RETURN</th> 
            <th class="title">RETURN</th>
         </tr>
-        <tr>
-           <th class="left">1</th>
-           <th class="left">2021886032</th>
-           <th class="left">Foundation in Computer Science</th>
-           <th class="left">5/9/2023</th>
-           <th class="left">19/9/2023</th>
-           <th class="left">1</th>
-           <th class="left"><button type="submit" class="return">RETURN</button></th>
+        <tr th:each="book : ${books}">
+           <td class="left" th:text="${borrow.studentid}"></td>
+           <td class="left" th:text="${borrow.borrowid}"></td>
+           <td class="left" th:text="${borrow.bookid}"></td>
+           <td class="left" th:text="${borrow.booktitle}"></td>
+           <td class="left" th:text="${borrow.bookquantity}"></td>
+           <td class="left" th:text="${borrow.dateborrow}"></td>
+           <td class="left" th:text="${borrow.datereturn}"><button><a class="update-link" th:href="@{/bookBorrowForm(bookId=${book.bookid})}">RETURN</a></td></button></td>
+           
+  
         </tr>
-        <tr>
-            <th class="left">2</th>
-            <th class="left">2021672887</th>
-            <th class="left">Kamus Dewan</th>
-            <th class="left">10/5/2023</th>
-            <th class="left">24/5/2023</th>
-            <th class="left">2</th>
-            <th class="left"><button type="submit" class="return">RETURN</button></th>
-        <tr>
-        <tr>
-            <th class="left">3</th>
-            <th class="left">2021892764</th>
-            <th class="left">Happy-Go-Lucky</th>
-            <th class="left">3/4/2023</th>
-            <th class="left">17/3/2023</th>
-            <th class="left">1</th>
-            <th class="left"><button type="submit" class="return">RETURN</button></th>
-        <tr>
-        </table>
+    </table>
     
 </body>
 </html>

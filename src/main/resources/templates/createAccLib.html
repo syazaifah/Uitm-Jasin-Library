@@ -4,92 +4,91 @@
     <title>UiTM Jasin Library System</title>
     <link rel="icon" type="image/x-icon" href="img/book.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    
 </head>
 
 <style>      
-    body{
-        background-image: url("img/back4.jpg");
-        background-attachment: fixed;
-        background-position: center;
-        background-size: cover;
-    }
+   body {
+            background-image: url("img/back4.jpg");
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .logo {
+            width: 12%;
+            margin-top: -50px;
+        }
+
+        .nav {
+            background-color:#3c5d68;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 85px;
+            font-size: 1.4rem;
+        }
     
-    .logo{
-        width: 12%;
-    }
+    .link {
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 800;
+            font-size: 20px;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            padding: 10px;
+            display: inline;
+            margin-left: 20px;
+        } 
     
-    .nav{
-        background-color:#ffffff;
-        position: relative;
+    .form-container{
+        background-color:#f2f9ee;
+        border-radius: 10px;
+        margin-top: 70px;
+        width: 500px;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
         display: flex;
-        margin-left: -8px;
-        margin-right: -8px;
-        margin-top: -8px;
-        height: 80px;
-        font-size: 1.4rem;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
+        padding: 20px;
     }
     
-    .link{
-        font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        font-weight: 800;
-        font-size: 20px;
-        text-decoration: none;
-        color: rgb(0, 0, 0)te;
-        padding: 10px;
-        display:inline;
-        margin-left: 20px;
-    } 
-    
-    .form{
+    .form-title{
         color:black;
         font-weight: 800;
         font-size: 27px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        margin-left: 65px;
         margin-top: -5px;
-    }
-    
-    #adCreate{
-        border-radius: 10px;
-        background-color:#f2f9ee;
-        margin-top: 70px;
-        margin-left: 440px;
-        width: 500px;
-        height: 400px;
-    }
-    
-    #create{
-        margin-top: 5px;
-        margin-left: 20px;
-        width: 425px;
-        height: 258px;
-        border-style: solid;
-        border-width: 3px;
-        border-color: black;
-        font-size: 16px;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        font-weight: 600;
-        color: black;
+        text-align: center;
     }
     
     label{
-        margin-left: 90px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
     
-    input[type="text"], input[type="email"], input[type="password"]{
-        margin-left: 90px;
+    input[type="text"], input[type="email"], input[type="tel"], input[type="password"]{
         border-radius: 5px;
         background-color: gainsboro;
         border-color: black;
-        width: 240px;
-        height: 20px;
+        width: 100%;
+        height: 30px;
+        padding: 5px;
+    }
+    
+    .small-info{
+        font-size: 14px;
+        margin-top: 5px;
     }
     
     .btn{
-        padding: 5px 40px;
+        padding: 10px 40px;
         background: #0786db;
         border-color: black;
         outline: none;
@@ -97,8 +96,8 @@
         font-size: 18px;
         font-weight: 500;
         border-radius: 20px;
-        margin-left: 155px;
         margin-top: 30px;
+        color: white;
     }
     
     .btn:hover{
@@ -110,24 +109,19 @@
         outline: none;
     }
     
-    #home{
-        margin-left: 1120px;
-    }
-    
     footer { 
-            text-align: center;
-            padding: 20px;
-            color: rgb(0, 0, 0);
-            font-weight: bold;
-            margin-top: auto;
-            margin-left: -8px;
-            margin-right: -8px;
-            color: #000000;
+        text-align: center;
+        padding: 20px;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        margin-left: -8px;
+        margin-right: -8px;
+        margin-bottom: 30px;
+        color: #000000;
     }
-    </style>
+</style>
 
 <body>
-
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
@@ -136,41 +130,57 @@
     </header>
 
     <div class="container">
-        <fieldset id="adCreate">
-            <h2 class="form">
+        <div class="form-container">
+            <h2 class="form-title">
                 CREATE LIBRARIAN ACCOUNT FORM
             </h2>
-            <fieldset id="create">
-                <form th:action="@{/createAccLib}" method="post">
-                    <label class="libid">Librarian ID :</label><br>
-                    <input type="text" name="libid" required><br><br>
-
-                    <label class="libname">Name :</label><br>
-                    <input type="text" name="libname" required><br><br>   
-                            
-                    <label class="libphonenumber">Phone Number:</label><br>
-                    <input type="tel" name="libphonenumber" pattern="[0-9]{10}" required><br><br>
+            <form th:action="@{/createAccLib}" method="post" onsubmit="return validatePassword()">
+                <label for="libid">Librarian ID:</label><br>
+                <input type="text" id="libid" name="libid" required><br>
                 
-                    <label class="libemail">Email:</label><br>   
-                    <input type="email" name="libemail" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required><br><br>
+                <label for="libname">Name:</label><br>
+                <input type="text" id="libname" name="libname" required><br>
                 
-                    <label class="libpassword">Password:</label><br>   
-                    <input type="password" name="libpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required><br>
-                    <small>Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one digit.</small><br><br>
-        
-                    <div class="btn-container">
-                        <button type="submit" class="btn">Create Account</button>
-                    </div>
-                </form>
-            </fieldset>
-        </fieldset>
+                <label for="libphonenumber">Phone Number:</label><br>
+                <input type="tel" id="libphonenumber" name="libphonenumber" pattern="[0-9]{10}" required><br>
+                
+                <label for="libemail">Email:</label><br>
+                <input type="email" id="libemail" name="libemail" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required><br>
+                
+                <label for="libpassword">Password:</label><br>
+                <input type="password" id="libpassword" name="libpassword" required><br>
+                <small id="password-info"></small><br>
+                
+                <div class="btn-container">
+                    <button type="submit" class="btn">Create Account</button>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
     <footer>
         UiTM Jasin Library &copy; 2023. All rights reserved.
     </footer>
 
+    <script>
+        function validatePassword() {
+            const passwordInput = document.getElementById('libpassword');
+            const passwordInfo = document.getElementById('password-info');
+            const passwordValue = passwordInput.value;
+
+            // Regular expression to validate password
+            const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+            if (!passwordRegex.test(passwordValue)) {
+                passwordInfo.textContent = 'Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one digit.';
+                passwordInfo.style.color = 'red';
+                passwordInput.focus();
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"></script>
 </body>
