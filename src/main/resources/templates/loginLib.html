@@ -18,6 +18,7 @@
     
     .logo{
         width: 12%;
+        margin-top: -30px;
     }
     
     .nav{
@@ -27,7 +28,7 @@
         margin-left: -8px;
         margin-right: -8px;
         margin-top: -8px;
-        height: 80px;
+        height: 100px;
         font-size: 1.4rem;
         align-items: center;
     }
@@ -58,7 +59,7 @@
         margin-top: 70px;
         margin-left: 440px;
         width: 500px;
-        height: 400px;
+        height: 360px;
     }
     
     #create{
@@ -111,7 +112,8 @@
     }
     
     #home{
-        margin-left: 1120px;
+        margin-left: 1180px;
+        margin-bottom: 60px;
     }
         </style>
 
@@ -127,7 +129,7 @@
     <div class="container">
         <fieldset id="adCreate">
             <h2 class="form">
-                LOGIN ACCOUNT FORM
+                LOGIN LIBRARIAN ACCOUNT 
             </h2>
             <fieldset id="create">
                 <form th:action="@{/loginLib}" method="post">           
@@ -137,15 +139,13 @@
                     <label class="libpassword">Password:</label><br>   
                     <input type="password" name="libpassword" required><br><br>
 
-                <button class="btn" type="submit">Create</button>
+                <button class="btn" type="submit">Login</button>
                 </form>
             </fieldset>
         </fieldset>
     </div>
     
     <br><br><br>
-    <footer>
-        UiTM Jasin Library &copy; 2023. All rights reserved.
-    </footer>
+   
 </body>
 </html>
