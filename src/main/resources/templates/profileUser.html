@@ -127,7 +127,7 @@ button:focus {
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
-            <a class="link" id="home" href="userHome.html">Home</a>
+            <a class="link" id="home" th:href="@{/userHome}">Home</a>
         </nav>
     </header>
 
@@ -136,25 +136,24 @@ button:focus {
             <h2 class="form">
                 VIEW ACCOUNT STUDENT
             </h2>
-            <fieldset id="create">
+            <fieldset id="create" style="height:300px">
                 <form th:action="@{/updateUser}" method="post" th:object="${profileUser}">
                     <label class="studname">Name:</label><br>
                     <input type="text" name="studname" th:value="${profileUser?.name}" ><br><br>
                     
                     <label class="studphonenumber">Phone Number : </label><br>
-                    <input type="tel" name="studphonenumber" th:value="${profileUser?.phone}" ><br><br>
+                    <input type="tel" name="studphonenumber" th:value="${profileUser?.phone}" style="margin-left: 100px;" ><br><br>
                     
                     <label class="studemail">Email : </label><br>
                     <input type="email" name="studemail" th:value="${profileUser?.email}" ><br><br>
 
                     <label class="studpassword">Password : </label><br>   
-                    <input type="password" name="studpassword" th:value="${profileUser?.password}" ><br><br>
+                    <input type="password" name="studpassword" th:value="${profileUser?.password}" style="margin-left:100px;" ><br><br>
 
-                    <div class="form-buttons">
-                        <a class="back" th:href="@{/}">BACK</a>
-                
+                    <div class="form-buttons" style="margin-left: 100px;">
+                       <input type="submit" value="BACK" th:href="@{/userHome}">
                         <input type="submit" value="UPDATE">
-                        <button type="submit" class="delete" th:formaction="@{/deleteStudent}">DELETE</button>
+                        <input type="submit" value="DELETE" th:formaction="@{/deleteStudent}" style="font-size: 15px;">
                     </div>
 
                 </form>

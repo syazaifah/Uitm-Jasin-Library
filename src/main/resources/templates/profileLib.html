@@ -136,25 +136,24 @@ button:focus {
             <h2 class="form">
                 VIEW ACCOUNT LIBRARIAN
             </h2>
-            <fieldset id="create">
+            <fieldset id="create" style="height:300px">
                 <form th:action="@{/updateLib}" method="post"  th:object="${profileLib}">
                     <label class="libname">Name:</label><br>
                     <input type="text" name="libname" th:value="${profileLib?.name}" ><br><br>
                     
                     <label class="libphonenumber">Phone Number : </label><br>
-                    <input type="tel" name="libphonenumber" th:value="${profileLib?.phone}" ><br><br>
+                    <input type="tel" name="libphonenumber" th:value="${profileLib?.phone}" style="margin-left: 100px;" ><br><br>
                     
                     <label class="libemail">Email : </label><br>
                     <input type="email" name="libemail" th:value="${profileLib?.email}" ><br><br>
 
                     <label class="libpassword">Password : </label><br>   
-                    <input type="password" name="libpassword" th:value="${profileLib?.password}" ><br><br>
+                    <input type="password" name="libpassword" th:value="${profileLib?.password}" style="margin-left: 100px;" ><br><br>
 
-                    <div class="form-buttons">
-                        <a class="back" th:href="@{/}">BACK</a>
-                
+                    <div class="form-buttons" style="margin-left: 100px;">
+                        <input type="submit" value="BACK" th:href="@{/libHome}">
                         <input type="submit" value="UPDATE">
-                        <button type="submit" class="delete" th:formaction="@{/deleteLib}">DELETE</button>
+                        <input type="submit" value="DELETE" th:formaction="@{/deleteLib}"></input>
                     </div>
                 </form>
             </fieldset>

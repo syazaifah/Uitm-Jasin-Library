@@ -117,7 +117,7 @@ table{
            <td class="left" th:text="${book.status}"></td>
            <td class="left" th:text="${book.bookquantity}"></td>
            <td class="left">
-            <a class="update-link" th:href="@{/bookBorrowForm(bookId=${book.bookid})}">ADD TO CART</a></td>
+           <button class="update-link" th:href="@{/bookBorrowForm(bookId=${book.bookid})}">ADD TO CART</a></button>
   
         </tr>
     </table>

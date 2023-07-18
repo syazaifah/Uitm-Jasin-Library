@@ -7,7 +7,7 @@
 
 <style>
 body{
-    background-image: url("img/bookshelf.jpg");
+    background-image: url("img/back8.jpeg");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -18,7 +18,7 @@ body{
 }
 
 .nav{
-    background-color:#1c441c;
+    background-color:#5bb7d8;
     position: relative;
     display: flex;
     margin-left: -8px;
@@ -92,7 +92,7 @@ label{
 
 button, .update{
     padding: 5px 40px;
-    background:#406b40;
+    background:#ffffff;
     border-color: black;
     outline: none;
     cursor: pointer;
@@ -126,7 +126,7 @@ p{
     <header>
         <nav class="nav">
             <img class="logo" src="img/uitm-logo.png">
-            <a class="link" id="home" href="libHome.html">Home</a>
+            <a class="link" id="home" th:href="@{/libHome}">Home</a>
         </nav>
     </header>
 
@@ -162,7 +162,7 @@ p{
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="submit" onclick="submitForm()">Submit</button>
+                        <button type="submit" class="submit" onclick="submitForm()">Update</button>
                     </div>
                 </form>
             </fieldset>
